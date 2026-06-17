@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeInterns | Bridge Between Education & Employment</title>
+    <style>
+        /* --- Design Tokens & Variables --- */
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #0f172a;
+            --accent: #f59e0b; /* Attention-grabbing gold/amber for the contact bar */
+            --text-dark: #334155;
+            --text-light: #64748b;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* --- Global Reset --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding-top: 110px; /* Offset to prevent sticky headers from covering content */
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- STICKY CONTACT TOP BAR --- */
+        .sticky-contact-bar {
+            background-color: var(--secondary);
+            color: var(--white);
+            text-align: center;
+            padding: 10px 0;
+            font-size: 0.95rem;
+            font-weight: 600;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 2000;
+            border-bottom: 2px solid var(--accent);
+            box-shadow: var(--shadow);
+        }
+
+        .sticky-contact-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            margin-left: 8px;
+            transition: var(--transition);
+            border-bottom: 1px dashed var(--accent);
+        }
+
+        .sticky-contact-bar a:hover {
+            color: var(--white);
+            border-bottom-color: var(--white);
+        }
+
+        /* --- Header / Navigation --- */
+        header {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 44px; /* Sits exactly under the sticky contact bar */
+            left: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* --- FLOATING CONTACT BUTTON --- */
+        .floating-contact-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 14px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.4);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+        }
+
+        .floating-contact-btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px -3px rgba(29, 78, 216, 0.6);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            padding: 100px 0 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+        }
+
+        .tagline-badges {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: var(--white);
+            color: var(--primary);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: var(--shadow);
+            border: 1px solid #e2e8f0;
+        }
+
+        /* --- About Section --- */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.25rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            margin: 10px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 50px auto;
+        }
+
+        .about-content {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .about-content p {
+            font-size: 1.15rem;
+            color: var(--text-dark);
+        }
+
+        /* --- Services Section --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-top: 4px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-top-color: var(--primary);
+        }
+
+        .service-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .service-card ul {
+            list-style: none;
+        }
+
+        .service-card ul li {
+            color: var(--text-light);
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 20px;
+            font-size: 0.95rem;
+        }
+
+        .service-card ul li::before {
+            content: "✓";
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* --- Open Roles Section --- */
+        .roles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .role-card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--primary);
+        }
+
+        .role-card h3 {
+            font-size: 1.25rem;
+            color: var(--secondary);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .role-tech-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .tech-tag {
+            background-color: #f1f5f9;
+            color: #475569;
+            font-size: 0.8rem;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        /* --- Vision Section --- */
+        .vision {
+            background: var(--secondary);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .vision .section-title {
+            color: var(--white);
+            margin-bottom: 30px;
+        }
+
+        .vision-content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.25rem;
+            font-style: italic;
+            opacity: 0.9;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: #0b0f19;
+            color: #94a3b8;
+            text-align: center;
+            padding: 40px 0;
+            font-size: 0.9rem;
+            border-top: 1px solid #1e293b;
+        }
+
+        footer .footer-email {
+            display: block;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        footer .footer-email:hover {
+            color: var(--primary);
+        }
+
+        /* --- Responsive Breakpoints --- */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 130px;
+            }
+            header {
+                top: 64px;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .nav-links {
+                display: none; 
+            }
+            .services-grid, .roles-grid {
+                grid-template-columns: 1fr;
+            }
+            .floating-contact-btn {
+                bottom: 20px;
+                right: 20px;
+                padding: 10px 18px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sticky Top Contact Banner (Always Visible) -->
+    <div class="sticky-contact-bar">
+        ✉️ Have questions? Get in touch with us at: <a href="mailto:contact@weinterns.in">contact@weinterns.in</a>
+    </div>
+
+    <!-- Floating Contact Button (Always Visible in Corner) -->
+    <a href="mailto:contact@weinterns.in" class="floating-contact-btn" title="Email Us Now">
+        <span>📧 Email Us</span>
+    </a>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">We<span>Interns</span></a>
+            <ul class="nav-links">
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Our Services</a></li>
+                <li><a href="#roles">Open Roles</a></li>
+                <li><a href="#vision">Our Vision</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Banner Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Bridging the Gap Between Education and Employment</h1>
+            <p>Empowering students, fresh graduates, and professionals with the skills, practical experience, and industry exposure needed to succeed in today's competitive job market.</p>
+            <div class="tagline-badges">
+                <span class="badge">Learn</span>
+                <span class="badge">Practice</span>
+                <span class="badge">Experience</span>
+                <span class="badge">Get Placed</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Us</h2>
+            <div class="about-content" style="margin-top: 30px;">
+                <p>We are a career-focused organization dedicated to bridging the gap between education and employment. Our mission is to empower students, fresh graduates, and professionals with the skills, practical experience, and industry exposure needed to succeed in today's competitive job market.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Services Section -->
+    <section id="services" class="section" style="background-color: #f1f5f9;">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid" style="margin-top: 30px;">
+                
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <span class="service-icon">🎓</span>
+                    <h3>Training & Skill Development</h3>
+                    <ul>
+                        <li>Industry-oriented training programs in IT, Automation, Engineering, Software Development, and emerging technologies.</li>
+                        <li>Hands-on learning with real-world applications and expert guidance.</li>
+                    </ul>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <span class="service-icon">💼</span>
+                    <h3>Internship Opportunities</h3>
+                    <ul>
+                        <li>Practical internship programs that provide valuable industry experience.</li>
+                        <li>Opportunities to work on live projects and develop professional skills.</li>
+                    </ul>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <span class="service-icon">🚀</span>
+                    <h3>Project Development</h3>
+                    <ul>
+                        <li>Academic and industrial project support for students and professionals.</li>
+                        <li>Real-time projects designed to enhance technical knowledge and problem-solving abilities.</li>
+                    </ul>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="service-card">
+                    <span class="service-icon">🤝</span>
+                    <h3>Placement Assistance</h3>
+                    <ul>
+                        <li>Career counseling, resume building, interview preparation, and job placement support.</li>
+                        <li>Connecting talented candidates with leading organizations and employment opportunities.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Open Internship Roles Section -->
+    <section id="roles" class="section">
+        <div class="container">
+            <h2 class="section-title">Open Internship Roles</h2>
+            <p class="section-subtitle">These are current roles, however, you can inquire about any role as per your interest or skill set by emailing us.</p>
+            
+            <div class="roles-grid">
+                <!-- Role 1 -->
+                <div class="role-card">
+                    <h3>💻 1. Backend Developer</h3>
+                    <div class="role-tech-container">
+                        <span class="tech-tag">Java</span><span class="tech-tag">Spring Boot</span><span class="tech-tag">Hibernate/JPA</span><span class="tech-tag">REST APIs</span><span class="tech-tag">Microservices</span><span class="tech-tag">SQL/NoSQL</span><span class="tech-tag">Docker</span><span class="tech-tag">Git</span><span class="tech-tag">Cloud Fundamentals</span>
+                    </div>
+                </div>
+
+                <!-- Role 2 -->
+                <div class="role-card">
+                    <h3>⚙️ 2. Full Stack Developer</h3>
+                    <div class="role-tech-container">
+                        <span class="tech-tag">React/Angular</span><span class="tech-tag">JavaScript/TypeScript</span><span class="tech-tag">Java</span><span class="tech-tag">Spring Boot</span><span class="tech-tag">Node.js</span><span class="tech-tag">REST APIs</span><span class="tech-tag">Databases</span><span class="tech-tag">Git</span><span class="tech-tag">Cloud Deployment</span>
+                    </div>
+                </div>
+
+                <!-- Role 3 -->
+                <div class="role-card">
+                    <h3>🎨 3. Frontend Developer</h3>
+                    <div class="role-tech-container">
+                        <span class="tech-tag">React</span><span class="tech-tag">Angular</span><span class="tech-tag">JavaScript</span><span class="tech-tag">TypeScript</span><span class="tech-tag">HTML5</span><span class="tech-tag">CSS3</span><span class="tech-tag">UI/UX</span><span class="tech-tag">Responsive Design</span><span class="tech-tag">API Integration</span>
+                    </div>
+                </div>
+
+                <!-- Role 4 -->
+                <div class="role-card">
+                    <h3>🤖 4. AI Developer</h3>
+                    <div class="role-tech-container">
+                        <span class="tech-tag">Generative AI</span><span class="tech-tag">Agentic AI</span><span class="tech-tag">LLMs</span><span class="tech-tag">RAG</span><span class="tech-tag">Prompt Engineering</span><span class="tech-tag">APIs</span><span class="tech-tag">Spring Boot</span><span class="tech-tag">Microservices</span><span class="tech-tag">WebSockets</span><span class="tech-tag">Spring Cloud</span><span class="tech-tag">Vector Databases</span><span class="tech-tag">Cloud & MLOps</span>
+                    </div>
+                </div>
+
+                <!-- Role 5 -->
+                <div class="role-card">
+                    <h3>☁️ 5. DevOps Engineer</h3>
+                    <div class="role-tech-container">
+                        <span class="tech-tag">Git</span><span class="tech-tag">Jenkins</span><span class="tech-tag">CI/CD</span><span class="tech-tag">Docker</span><span class="tech-tag">Kubernetes</span><span class="tech-tag">OpenShift</span><span class="tech-tag">Terraform</span><span class="tech-tag">Monitoring</span><span class="tech-tag">Cloud Platforms</span>
+                    </div>
+                </div>
+
+                <!-- Role 6 -->
+                <div class="role-card">
+                    <h3>📊 6. Data Engineer</h3>
+                    <div class="role-tech-container">
+                        <span class="tech-tag">Python</span><span class="tech-tag">SQL</span><span class="tech-tag">ETL</span><span class="tech-tag">Data Pipelines</span><span class="tech-tag">Apache Spark</span><span class="tech-tag">Kafka</span><span class="tech-tag">Data Warehousing</span><span class="tech-tag">Cloud Data Services</span>
+                    </div>
+                </div>
+
+                <!-- Role 7 -->
+                <div class="role-card">
+                    <h3>🛡️ 7. QA Engineer</h3>
+                    <div class="role-tech-container">
+                        <span class="tech-tag">Manual Testing</span><span class="tech-tag">Automation Testing</span><span class="tech-tag">Selenium</span><span class="tech-tag">API Testing</span><span class="tech-tag">Performance Testing</span><span class="tech-tag">Test Frameworks</span><span class="tech-tag">CI/CD</span>
+                    </div>
+                </div>
+
+                <!-- Role 8 -->
+                <div class="role-card">
+                    <h3>📱 8. Mobile App Developer</h3>
+                    <div class="role-tech-container">
+                        <span class="tech-tag">Android</span><span class="tech-tag">iOS</span><span class="tech-tag">Flutter</span><span class="tech-tag">React Native</span><span class="tech-tag">Mobile APIs</span><span class="tech-tag">Firebase</span><span class="tech-tag">UI/UX</span><span class="tech-tag">App Deployment</span>
+                    </div>
+                </div>
+
+                <!-- Role 9 -->
+                <div class="role-card">
+                    <h3>🌐 9. Cloud Engineer</h3>
+                    <div class="role-tech-container">
+                        <span class="tech-tag">AWS</span><span class="tech-tag">Azure</span><span class="tech-tag">Google Cloud</span><span class="tech-tag">Infrastructure as Code</span><span class="tech-tag">Containers</span><span class="tech-tag">Security</span><span class="tech-tag">Monitoring</span><span class="tech-tag">Automation</span>
+                    </div>
+                </div>
+
+                <!-- Role 10 -->
+                <div class="role-card">
+                    <h3>📈 10. Business Analyst</h3>
+                    <div class="role-tech-container">
+                        <span class="tech-tag">Requirements Gathering</span><span class="tech-tag">Process Analysis</span><span class="tech-tag">Agile Methodologies</span><span class="tech-tag">User Stories</span><span class="tech-tag">Documentation</span><span class="tech-tag">Stakeholder Management</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Vision Section -->
+    <section id="vision" class="section vision">
+        <div class="container">
+            <h2 class="section-title">Our Vision</h2>
+            <div class="vision-content">
+                <p>"To create a skilled and job-ready workforce by providing quality training, meaningful internship experiences, innovative project opportunities, and successful placement support."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <a href="mailto:contact@weinterns.in" class="footer-email">✉️ contact@weinterns.in</a>
+            <p>&copy; 2026 weinterns.in. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
