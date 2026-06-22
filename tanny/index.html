@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanya Cakes | Pasteles Caseros en Texas</title>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-rose: #FADBD8;
+            --dark-rose: #E6B0AA;
+            --text-dark: #4A3B32;
+            --text-muted: #7D6B60;
+            --bg-cream: #FFFDF9;
+            --white: #FFFFFF;
+            --gold: #D4AF37;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--bg-cream);
+        }
+
+        h1, h2, h3, .brand-name {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: rgba(255, 253, 249, 0.95);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 2px 15px rgba(125, 107, 96, 0.08);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--dark-rose);
+            font-style: italic;
+        }
+
+        .lang-selector select {
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            border: 1px solid var(--dark-rose);
+            background: var(--white);
+            color: var(--text-dark);
+            font-weight: 500;
+            cursor: pointer;
+            outline: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(255,253,249,0.8), rgba(250,219,216,0.5)), url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 11rem 2rem 8rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+        }
+
+        .badge {
+            background-color: var(--white);
+            border: 1px solid var(--dark-rose);
+            color: var(--text-dark);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Global Sections */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            margin-bottom: 3rem;
+        }
+
+        .section-title::after {
+            content: '✿';
+            display: block;
+            font-size: 1.2rem;
+            color: var(--dark-rose);
+            margin-top: 0.5rem;
+        }
+
+        /* Feature Highlights */
+        .features-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .feature-item {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(125, 107, 96, 0.03);
+            border: 1px solid rgba(250, 219, 216, 0.3);
+        }
+
+        .feature-item i {
+            font-size: 2.5rem;
+            color: var(--dark-rose);
+            margin-bottom: 1rem;
+        }
+
+        .feature-item h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+        }
+
+        /* Cake Samples Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.04);
+            border: 1px solid rgba(230, 176, 170, 0.2);
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .gallery-info h3 {
+            font-size: 1.4rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .gallery-info p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Events Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+
+        .event-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+            border-bottom-color: var(--dark-rose);
+            box-shadow: 0 10px 25px rgba(230, 176, 170, 0.2);
+        }
+
+        .event-card i {
+            font-size: 2.2rem;
+            color: var(--dark-rose);
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact-box {
+            background: var(--white);
+            max-width: 650px;
+            margin: 0 auto;
+            padding: 3.5rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(125, 107, 96, 0.05);
+            border: 1px solid var(--primary-rose);
+        }
+
+        .contact-box p {
+            margin-bottom: 2rem;
+            color: var(--text-muted);
+        }
+
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #1ebd59;
+            transform: translateY(-2px);
+        }
+
+        .btn-call {
+            background-color: var(--text-dark);
+            color: white;
+        }
+
+        .btn-call:hover {
+            background-color: #332822;
+            transform: translateY(-2px);
+        }
+
+        .email-display {
+            display: inline-block;
+            margin-top: 2rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dashed var(--dark-rose);
+        }
+
+        footer {
+            background-color: var(--text-dark);
+            color: var(--primary-rose);
+            text-align: center;
+            padding: 2.5rem 2rem;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.4rem; }
+            section { padding: 4rem 1.5rem; }
+            .nav-container { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Language Switcher -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">Tanya<span>Cakes</span></a>
+            <div class="lang-selector">
+                <i class="fa-solid fa-language" style="color: var(--dark-rose); margin-right: 5px;"></i>
+                <select id="langSelect" onchange="switchLanguage()">
+                    <option value="es" selected>Español</option>
+                    <option value="en">English</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Area -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="badge" id="heroBadge">📍 Texas, USA | Hecho con Amor por Tanya</span>
+            <h1 id="heroTitle">Pasteles Personalizados para Tus Momentos Dulces</h1>
+            <p id="heroSubtitle">Repostería artesanal, horneada desde casa con ingredientes frescos y diseños personalizados que transforman tus celebraciones en recuerdos inolvidables.</p>
+            <a href="https://wa.me/12145550199" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> <span id="heroCta">Pedir por WhatsApp</span></a>
+        </div>
+    </section>
+
+    <!-- Core Business Features -->
+    <section>
+        <div class="features-bar">
+            <div class="feature-item">
+                <i class="fa-solid fa-house-chimney-heart"></i>
+                <h3 id="feat1-title">Por Tanya, La Pastelera</h3>
+                <p id="feat1-desc" style="color: var(--text-muted);">100% casero y sin conservadores. Sabor auténtico y natural horneado con el calor de mi hogar.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <h3 id="feat2-title">Diseños Únicos</h3>
+                <p id="feat2-desc" style="color: var(--text-muted);">Cuéntame tu idea y la transformaré en un pastel de diseño exclusivo para ti.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cake Samples Gallery -->
+    <section id="gallery">
+        <h2 class="section-title" id="galleryTitle">Nuestras Creaciones</h2>
+        <div class="gallery-grid">
+            <!-- Sample 1 -->
+            <div class="gallery-card">
+                <img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=500&q=80" alt="Pastel de Cumpleaños" class="gallery-img">
+                <div class="gallery-info">
+                    <h3 id="cake1-title">Pastel de Cumpleaños Mágico</h3>
+                    <p id="cake1-desc">Diseños coloridos y divertidos, personalizados con tus sabores y temáticas favoritas.</p>
+                </div>
+            </div>
+            <!-- Sample 2 -->
+            <div class="gallery-card">
+                <img src="https://images.unsplash.com/photo-1535254973040-607b474cb50d?auto=format&fit=crop&w=500&q=80" alt="Pastel de Aniversario" class="gallery-img">
+                <div class="gallery-info">
+                    <h3 id="cake2-title">Elegancia para Aniversarios</h3>
+                    <p id="cake2-desc">Detalles finos y acabados sofisticados para celebrar el amor y los años juntos.</p>
+                </div>
+            </div>
+            <!-- Sample 3 -->
+            <div class="gallery-card">
+                <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?auto=format&fit=crop&w=500&q=80" alt="Cupcakes Románticos" class="gallery-img">
+                <div class="gallery-info">
+                    <h3 id="cake3-title">Detalles de Amor y Amistad</h3>
+                    <p id="cake3-desc">Cupcakes personalizados y postres pequeños perfectos para regalar a alguien especial.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Celebrations / Use cases -->
+    <section style="background-color: rgba(250, 219, 216, 0.15); max-width: 100%;">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
+            <h2 class="section-title" id="eventsTitle">Creamos Dulzura para Cada Ocasión</h2>
+            <div class="grid">
+                <div class="event-card">
+                    <i class="fa-solid fa-cake-candles"></i>
+                    <h3 id="ev1">Cumpleaños</h3>
+                </div>
+                <div class="event-card">
+                    <i class="fa-solid fa-champagne-glasses"></i>
+                    <h3 id="ev2">Aniversarios</h3>
+                </div>
+                <div class="event-card">
+                    <i class="fa-solid fa-user-group"></i>
+                    <h3 id="ev3">Amistad</h3>
+                </div>
+                <div class="event-card">
+                    <i class="fa-solid fa-heart"></i>
+                    <h3 id="ev4">Amor y Romance</h3>
+                </div>
+                <div class="event-card">
+                    <i class="fa-solid fa-award"></i>
+                    <h3 id="ev5">Felicitaciones</h3>
+                </div>
+                <div class="event-card">
+                    <i class="fa-solid fa-sparkles"></i>
+                    <h3 id="ev6">Eventos Especiales</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order / Contact -->
+    <section id="contact">
+        <h2 class="section-title" id="contactTitle">Haz tu Pedido</h2>
+        <div class="contact-box">
+            <p id="contactPrompt">Al ser un negocio totalmente artesanal operado por mí desde casa, agradezco que agendes tus pedidos con anticipación. Ponte en contacto conmigo directamente:</p>
+            <div class="btn-group">
+                <a href="https://wa.me/12145550199" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> WhatsApp: +1 (214) 555-0199</a>
+                <a href="tel:+12145550199" class="btn btn-call"><i class="fa-solid fa-phone"></i> <span id="btnCall">Llamar a Tanya</span></a>
+            </div>
+            <a href="mailto:contact@annmaestra.top" class="email-display"><i class="fa-solid fa-envelope"></i> contact@annmaestra.top</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Tanya Cakes. Hecho a mano por Tanya | Texas, USA. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Multilingual Engine Script -->
+    <script>
+        const content = {
+            es: {
+                heroBadge: "📍 Texas, USA | Hecho con Amor por Tanya",
+                heroTitle: "Pasteles Personalizados para Tus Momentos Dulces",
+                heroSubtitle: "Repostería artesanal, horneada desde casa con ingredientes frescos y diseños personalizados que transforman tus celebraciones en recuerdos inolvidables.",
+                heroCta: "Pedir por WhatsApp",
+                feat1Title: "Por Tanya, La Pastelera",
+                feat1Desc: "100% casero y sin conservadores. Sabor auténtico y natural horneado con el calor de mi hogar.",
+                feat2Title: "Diseños Únicos",
+                feat2Desc: "Cuéntame tu idea y la transformaré en un pastel de diseño exclusivo para ti.",
+                galleryTitle: "Nuestras Creaciones",
+                cake1Title: "Pastel de Cumpleaños Mágico",
+                cake1Desc: "Diseños coloridos y divertidos, personalizados con tus sabores y temáticas favoritas.",
+                cake2Title: "Elegancia para Aniversarios",
+                cake2Desc: "Detalles finos y acabados sofisticados para celebrar el amor y los años juntos.",
+                cake3Title: "Detalles de Amor y Amistad",
+                cake3Desc: "Cupcakes personalizados y postres pequeños perfectos para regalar a alguien especial.",
+                eventsTitle: "Creamos Dulzura para Cada Ocasión",
+                ev1: "Cumpleaños",
+                ev2: "Aniversarios",
+                ev3: "Amistad",
+                ev4: "Amor y Romance",
+                ev5: "Felicitaciones",
+                ev6: "Eventos Especiales",
+                contactTitle: "Haz tu Pedido",
+                contactPrompt: "Al ser un negocio totalmente artesanal operado por mí desde casa, agradezco que agendes tus pedidos con anticipación. Ponte en contacto conmigo directamente:",
+                btnCall: "Llamar a Tanya"
+            },
+            en: {
+                heroBadge: "📍 Texas, USA | Made with Love by Tanya",
+                heroTitle: "Custom Cakes for Your Sweetest Moments",
+                heroSubtitle: "Artisanal baking, freshly made from my home kitchen with custom designs that turn your celebrations into beautiful memories.",
+                heroCta: "Order via WhatsApp",
+                feat1Title: "By Tanya, The Cake Maker",
+                feat1Desc: "100% homemade and preservative-free. Authentic, natural flavor baked right from my warm home kitchen.",
+                feat2Title: "Bespoke Designs",
+                feat2Desc: "Share your vision with me, and I will craft an exclusive custom cake design for you.",
+                galleryTitle: "Our Creations",
+                cake1Title: "Magical Birthday Cakes",
+                cake1Desc: "Colorful and fun designs, customized with your favorite flavors and party themes.",
+                cake2Title: "Anniversary Elegance",
+                cake2Desc: "Delicate details and sophisticated finishes to celebrate love and milestones together.",
+                cake3Title: "Love & Friendship Sweets",
+                cake3Desc: "Custom cupcakes and small desserts perfect for gifting to someone special.",
+                eventsTitle: "Sweetness Tailored for Every Occasion",
+                ev1: "Birthdays",
+                ev2: "Anniversaries",
+                ev3: "Friendship",
+                ev4: "Love & Romance",
+                ev5: "Congratulations",
+                ev6: "Special Events",
+                contactTitle: "Place Your Order",
+                contactPrompt: "As a fully custom, artisanal bakery operated by myself from home, I highly appreciate placing your orders in advance. Reach out to me directly:",
+                btnCall: "Call Tanya Direct"
+            }
+        };
+
+        function switchLanguage() {
+            const lang = document.getElementById('langSelect').value;
+            const data = content[lang];
+
+            document.getElementById('heroBadge').innerText = data.heroBadge;
+            document.getElementById('heroTitle').innerText = data.heroTitle;
+            document.getElementById('heroSubtitle').innerText = data.heroSubtitle;
+            document.getElementById('heroCta').innerText = data.heroCta;
+            
+            document.getElementById('feat1-title').innerText = data.feat1Title;
+            document.getElementById('feat1-desc').innerText = data.feat1Desc;
+            document.getElementById('feat2-title').innerText = data.feat2Title;
+            document.getElementById('feat2-desc').innerText = data.feat2Desc;
+
+            document.getElementById('galleryTitle').innerText = data.galleryTitle;
+            document.getElementById('cake1-title').innerText = data.cake1Title;
+            document.getElementById('cake1-desc').innerText = data.cake1Desc;
+            document.getElementById('cake2-title').innerText = data.cake2Title;
+            document.getElementById('cake2-desc').innerText = data.cake2Desc;
+            document.getElementById('cake3-title').innerText = data.cake3Title;
+            document.getElementById('cake3-desc').innerText = data.cake3Desc;
+
+            document.getElementById('eventsTitle').innerText = data.eventsTitle;
+            document.getElementById('ev1').innerText = data.ev1;
+            document.getElementById('ev2').innerText = data.ev2;
+            document.getElementById('ev3').innerText = data.ev3;
+            document.getElementById('ev4').innerText = data.ev4;
+            document.getElementById('ev5').innerText = data.ev5;
+            document.getElementById('ev6').innerText = data.ev6;
+
+            document.getElementById('contactTitle').innerText = data.contactTitle;
+            document.getElementById('contactPrompt').innerText = data.contactPrompt;
+            document.getElementById('btnCall').innerText = data.btnCall;
+        }
+    </script>
+</body>
+</html>
