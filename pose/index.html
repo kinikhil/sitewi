@@ -6,7 +6,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
     <style>
         body { margin: 0; text-align: center; font-family: sans-serif; background: #111; color: #fff; }
-        /* Keep canvas proportional but readable */
         #output { width: 100vw; height: 100vh; object-fit: contain; }
         #controls { position: absolute; bottom: 20px; width: 100%; z-index: 10; }
         #countdownOverlay { 
@@ -21,8 +20,8 @@
 </head>
 <body>
 
-    <div id="countdownOverlay">10</div>
-    <video id="input" style="display:none;"></video>
+    <div id="countdownOverlay">5</div>
+    <video id="input" style="display:none;" playsinline></video>
     <canvas id="output"></canvas>
     
     <div id="controls">
@@ -44,7 +43,6 @@
         pose.setOptions({modelComplexity: 1, smoothLandmarks: true});
 
         function drawBody(lm) {
-            // Thinner lines for better precision
             ctx.strokeStyle = '#CCFF00'; ctx.lineWidth = 2; 
             const draw = (i, j) => {
                 ctx.beginPath();
@@ -53,12 +51,10 @@
                 ctx.stroke();
             };
 
-            // Head (Oval) & Neck
             ctx.beginPath(); ctx.ellipse(lm[0].x * canvas.width, lm[0].y * canvas.height, 15, 20, 0, 0, 2 * Math.PI); ctx.stroke();
             const midX = (lm[11].x + lm[12].x) / 2 * canvas.width, midY = (lm[11].y + lm[12].y) / 2 * canvas.height;
             ctx.beginPath(); ctx.moveTo(lm[0].x * canvas.width, lm[0].y * canvas.height); ctx.lineTo(midX, midY); ctx.stroke();
 
-            // Skeleton
             draw(11, 12); draw(11, 13); draw(13, 15); draw(15, 17);
             draw(12, 14); draw(14, 16); draw(16, 18); draw(11, 23); 
             draw(12, 24); draw(23, 24); draw(23, 25); draw(25, 27); 
@@ -70,16 +66,25 @@
             if(camera) await camera.stop();
             frames = []; captureCount = 0;
             countdownOverlay.style.display = 'flex';
-            let count = 10;
+            let count = 5;
+            countdownOverlay.innerText = count;
             const timer = setInterval(() => {
-                countdownOverlay.innerText = count;
                 if (--count < 0) {
                     clearInterval(timer);
                     countdownOverlay.style.display = 'none';
                     isRecording = true;
+                } else {
+                    countdownOverlay.innerText = count;
                 }
             }, 1000);
-            camera = new Camera(video, {onFrame: async () => await pose.send({image: video}), width: 640, height: 480});
+
+            // Using facingMode: 'environment' to target the rear camera
+            camera = new Camera(video, {
+                onFrame: async () => await pose.send({image: video}),
+                width: 640, 
+                height: 480,
+                facingMode: 'environment' 
+            });
             camera.start();
         }
 
@@ -88,7 +93,6 @@
             if (!results.poseLandmarks) return;
             drawBody(results.poseLandmarks);
             
-            // 50ms capture interval
             if (isRecording && captureCount < 40 && (Date.now() % 50 < 10)) { 
                 frames.push(canvas.toDataURL());
                 captureCount++;
