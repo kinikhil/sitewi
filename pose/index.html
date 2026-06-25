@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>TennisNuts Capture Pose</title>
+    <title>MyPo Capture Pose</title>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose/pose.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
     <style>
@@ -12,14 +12,14 @@
     </style>
 </head>
 <body>
-    <h1>TennisNuts Capture Pose</h1>
+    <h1>MyPo Capture Pose</h1>
     <video id="input" style="display:none;"></video>
     <canvas id="output" width="640" height="480"></canvas>
     
     <div id="controls">
-        <button id="playBtn" disabled>Play Capture Pose</button>
-        <button id="restartBtn">Restart Capture Pose</button>
-        <p id="status">Click "Restart Capture Pose" to begin.</p>
+        <button id="playBtn" disabled>Play MyPo Pose</button>
+        <button id="restartBtn">Restart MyPo Capture</button>
+        <p id="status">Click "Restart MyPo Capture" to begin.</p>
     </div>
     
     <div id="playbackArea"></div>
@@ -43,14 +43,12 @@
                 ctx.stroke();
             };
 
-            ctx.beginPath();
-            ctx.ellipse(lm[0].x * 640, lm[0].y * 480, 20, 30, 0, 0, 2 * Math.PI);
-            ctx.stroke();
-
-            const midX = (lm[11].x + lm[12].x) / 2 * 640;
-            const midY = (lm[11].y + lm[12].y) / 2 * 480;
+            // Head & Neck
+            ctx.beginPath(); ctx.ellipse(lm[0].x * 640, lm[0].y * 480, 20, 30, 0, 0, 2 * Math.PI); ctx.stroke();
+            const midX = (lm[11].x + lm[12].x) / 2 * 640, midY = (lm[11].y + lm[12].y) / 2 * 480;
             ctx.beginPath(); ctx.moveTo(lm[0].x * 640, lm[0].y * 480); ctx.lineTo(midX, midY); ctx.stroke();
 
+            // Skeleton
             draw(11, 12); draw(11, 13); draw(13, 15); draw(15, 17);
             draw(12, 14); draw(14, 16); draw(16, 18); draw(11, 23); 
             draw(12, 24); draw(23, 24); draw(23, 25); draw(25, 27); 
@@ -78,7 +76,6 @@
             if (!results.poseLandmarks) return;
             drawBody(results.poseLandmarks);
             
-            // 50ms delay capture logic
             if (isRecording && captureCount < 40 && (Date.now() % 50 < 10)) { 
                 frames.push(canvas.toDataURL());
                 captureCount++;
@@ -94,7 +91,6 @@
 
         document.getElementById('restartBtn').onclick = startProcess;
         playBtn.onclick = () => {
-            // Scroll to center the playback area
             playbackArea.scrollIntoView({ behavior: 'smooth', block: 'center' });
             let i = 0;
             const interval = setInterval(() => {
