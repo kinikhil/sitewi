@@ -5,21 +5,29 @@
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose/pose.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
     <style>
-        body { text-align: center; font-family: sans-serif; background: #f9f9f9; }
-        #output { border: 4px solid #2E8B57; background-color: #000; border-radius: 8px; }
-        #controls { margin: 20px; }
-        #playbackArea { margin-top: 20px; min-height: 480px; transition: scroll 0.3s; }
+        body { margin: 0; text-align: center; font-family: sans-serif; background: #111; color: #fff; }
+        /* Keep canvas proportional but readable */
+        #output { width: 100vw; height: 100vh; object-fit: contain; }
+        #controls { position: absolute; bottom: 20px; width: 100%; z-index: 10; }
+        #countdownOverlay { 
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
+            background: rgba(0,0,0,0.9); font-size: 20vw; display: flex; 
+            align-items: center; justify-content: center; z-index: 20; display: none;
+        }
+        #playbackArea { background: #000; padding: 20px; }
+        .high-contrast { filter: invert(1) hue-rotate(180deg) brightness(2); }
+        button { padding: 15px 30px; font-size: 1.2rem; cursor: pointer; border-radius: 5px; }
     </style>
 </head>
 <body>
-    <h1>MyPo Capture Pose</h1>
+
+    <div id="countdownOverlay">10</div>
     <video id="input" style="display:none;"></video>
-    <canvas id="output" width="640" height="480"></canvas>
+    <canvas id="output"></canvas>
     
     <div id="controls">
-        <button id="playBtn" disabled>Play MyPo Pose</button>
-        <button id="restartBtn">Restart MyPo Capture</button>
-        <p id="status">Click "Restart MyPo Capture" to begin.</p>
+        <button id="playBtn" disabled>Play Capture</button>
+        <button id="restartBtn">Capture</button>
     </div>
     
     <div id="playbackArea"></div>
@@ -27,26 +35,28 @@
     <script>
         const video = document.getElementById('input'), canvas = document.getElementById('output');
         const ctx = canvas.getContext('2d'), playBtn = document.getElementById('playBtn');
-        const status = document.getElementById('status'), playbackArea = document.getElementById('playbackArea');
+        const countdownOverlay = document.getElementById('countdownOverlay');
+        const playbackArea = document.getElementById('playbackArea');
         
-        let frames = [], captureCount = 0, camera, isRecording = false, countdown = 10;
+        let frames = [], captureCount = 0, camera, isRecording = false;
 
         const pose = new Pose({locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${file}`});
         pose.setOptions({modelComplexity: 1, smoothLandmarks: true});
 
         function drawBody(lm) {
-            ctx.strokeStyle = '#CCFF00'; ctx.lineWidth = 4;
+            // Thinner lines for better precision
+            ctx.strokeStyle = '#CCFF00'; ctx.lineWidth = 2; 
             const draw = (i, j) => {
                 ctx.beginPath();
-                ctx.moveTo(lm[i].x * 640, lm[i].y * 480);
-                ctx.lineTo(lm[j].x * 640, lm[j].y * 480);
+                ctx.moveTo(lm[i].x * canvas.width, lm[i].y * canvas.height);
+                ctx.lineTo(lm[j].x * canvas.width, lm[j].y * canvas.height);
                 ctx.stroke();
             };
 
-            // Head & Neck
-            ctx.beginPath(); ctx.ellipse(lm[0].x * 640, lm[0].y * 480, 20, 30, 0, 0, 2 * Math.PI); ctx.stroke();
-            const midX = (lm[11].x + lm[12].x) / 2 * 640, midY = (lm[11].y + lm[12].y) / 2 * 480;
-            ctx.beginPath(); ctx.moveTo(lm[0].x * 640, lm[0].y * 480); ctx.lineTo(midX, midY); ctx.stroke();
+            // Head (Oval) & Neck
+            ctx.beginPath(); ctx.ellipse(lm[0].x * canvas.width, lm[0].y * canvas.height, 15, 20, 0, 0, 2 * Math.PI); ctx.stroke();
+            const midX = (lm[11].x + lm[12].x) / 2 * canvas.width, midY = (lm[11].y + lm[12].y) / 2 * canvas.height;
+            ctx.beginPath(); ctx.moveTo(lm[0].x * canvas.width, lm[0].y * canvas.height); ctx.lineTo(midX, midY); ctx.stroke();
 
             // Skeleton
             draw(11, 12); draw(11, 13); draw(13, 15); draw(15, 17);
@@ -58,13 +68,15 @@
 
         async function startProcess() {
             if(camera) await camera.stop();
-            countdown = 10; isRecording = false; playBtn.disabled = true; frames = [];
+            frames = []; captureCount = 0;
+            countdownOverlay.style.display = 'flex';
+            let count = 10;
             const timer = setInterval(() => {
-                status.innerText = `Starting in ${countdown}...`;
-                if (--countdown < 0) {
+                countdownOverlay.innerText = count;
+                if (--count < 0) {
                     clearInterval(timer);
-                    isRecording = true; captureCount = 0;
-                    status.innerText = "Recording... (0/40)";
+                    countdownOverlay.style.display = 'none';
+                    isRecording = true;
                 }
             }, 1000);
             camera = new Camera(video, {onFrame: async () => await pose.send({image: video}), width: 640, height: 480});
@@ -72,29 +84,27 @@
         }
 
         pose.onResults((results) => {
-            ctx.clearRect(0, 0, 640, 480);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
             if (!results.poseLandmarks) return;
             drawBody(results.poseLandmarks);
             
+            // 50ms capture interval
             if (isRecording && captureCount < 40 && (Date.now() % 50 < 10)) { 
                 frames.push(canvas.toDataURL());
                 captureCount++;
-                status.innerText = `Recording: ${captureCount}/40`;
                 if (captureCount === 40) {
-                    isRecording = false;
-                    camera.stop();
-                    status.innerText = "Capture Complete.";
-                    playBtn.disabled = false;
+                    isRecording = false; camera.stop(); playBtn.disabled = false;
                 }
             }
         });
 
         document.getElementById('restartBtn').onclick = startProcess;
         playBtn.onclick = () => {
+            playbackArea.classList.add('high-contrast');
             playbackArea.scrollIntoView({ behavior: 'smooth', block: 'center' });
             let i = 0;
             const interval = setInterval(() => {
-                playbackArea.innerHTML = `<img src="${frames[i]}" style="border: 2px solid #2E8B57;">`;
+                playbackArea.innerHTML = `<img src="${frames[i]}" style="width:100%; border: 2px solid #CCFF00;">`;
                 if (++i >= frames.length) clearInterval(interval);
             }, 200);
         };
