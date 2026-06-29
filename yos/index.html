@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Symphony Soloist — Classical Guitar</title>
+    <title>Yo — Classical Symphonies on Six Strings</title>
     <style>
         /* --- Artistic Core System --- */
         * {
@@ -13,13 +13,13 @@
         }
 
         :root {
-            --bg-canvas: #0d0b09; /* Deep charcoal warm wood ash */
-            --velvet: #3d0c11;    /* Deep opera house velvet curtain shadow */
-            --brass: #d4af37;     /* Antique instrument gold */
-            --ivory: #f9f6f0;     /* Soft manuscript paper tone */
-            --muted-stone: #8a8279;
-            --font-serif: 'Playfair Display', 'Georgia', serif;
-            --font-sans: 'Montserrat', 'Helvetica Neue', sans-serif;
+            --bg-canvas: #0c0a09;    /* Deep charcoal wood ash */
+            --brass: #d4af37;        /* Antique instrument gold */
+            --ivory: #f9f6f0;        /* Soft manuscript paper tone */
+            --muted-stone: #8a8279;  /* Elegant shadow grey */
+            --velvet: #421016;       /* Theater Velvet */
+            --font-serif: 'Georgia', 'Noto Serif JP', serif;
+            --font-sans: 'Helvetica Neue', Arial, 'Noto Sans JP', sans-serif;
         }
 
         body {
@@ -28,7 +28,7 @@
             font-family: var(--font-sans);
             letter-spacing: 1px;
             overflow-x: hidden;
-            line-height: 1.7;
+            line-height: 1.8;
         }
 
         /* --- Minimal Navigation --- */
@@ -44,59 +44,72 @@
 
         .monogram {
             font-family: var(--font-serif);
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 300;
             color: var(--brass);
             text-decoration: none;
             border: 1px solid var(--brass);
-            padding: 0.3rem 0.8rem;
+            padding: 0.2rem 0.7rem;
+            letter-spacing: 2px;
         }
 
-        nav a {
-            color: var(--ivory);
-            text-decoration: none;
+        /* --- Language Selector Buttons --- */
+        .lang-selector {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: var(--muted-stone);
             font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-left: 3rem;
-            transition: color 0.4s;
+            letter-spacing: 2px;
+            cursor: pointer;
+            padding: 0.2rem 0.5rem;
+            transition: all 0.3s ease;
         }
 
-        nav a:hover {
+        .lang-btn:hover, .lang-btn.active {
             color: var(--brass);
         }
 
-        /* --- Hero / Stage Split Layout --- */
+        .lang-btn.active {
+            border-bottom: 1px solid var(--brass);
+        }
+
+        /* --- Main Splitted Layout Workspace --- */
         .stage-container {
             min-height: 100vh;
             display: grid;
             grid-template-columns: 1.2fr 1fr;
-            align-items: center;
+            align-items: start;
             padding: 0 6%;
-            gap: 4rem;
+            gap: 5rem;
             background: radial-gradient(circle at 10% 20%, #1a1215 0%, var(--bg-canvas) 80%);
         }
 
-        /* Artistic Typography Grid */
         .stage-text {
-            padding-top: 4rem;
+            padding-top: 9rem;
+            padding-bottom: 4rem;
         }
 
         .subtitle {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
             color: var(--brass);
-            letter-spacing: 6px;
+            letter-spacing: 5px;
             margin-bottom: 1.5rem;
             display: block;
         }
 
         h1 {
             font-family: var(--font-serif);
-            font-size: clamp(3rem, 5vw, 5.5rem);
+            font-size: clamp(2.5rem, 4vw, 4.5rem);
             font-weight: 400;
-            line-height: 1.1;
-            margin-bottom: 2.5rem;
+            line-height: 1.2;
+            margin-bottom: 3rem;
             color: var(--ivory);
         }
 
@@ -104,143 +117,329 @@
             display: block;
             font-style: italic;
             color: var(--muted-stone);
-            font-size: 0.8em;
+            font-size: 0.65em;
+            margin-top: 0.3rem;
+            letter-spacing: 1px;
         }
 
-        /* Narrative Block */
-        .philosophy-text {
+        /* Dynamic Copy Translation Blocks */
+        .content-translation {
+            font-size: 1rem;
             color: var(--muted-stone);
-            font-size: 1.05rem;
-            max-width: 520px;
-            margin-bottom: 3rem;
+            text-align: justify;
+            margin-bottom: 4rem;
+            max-width: 580px;
         }
 
-        .philosophy-text strong {
+        .content-translation strong {
             color: var(--ivory);
             font-weight: 500;
         }
 
-        /* --- Dramatic Image Canvas --- */
-        .image-frame {
-            position: relative;
-            width: 100%;
-            height: 75vh;
-            border-radius: 2px;
-            overflow: hidden;
-            border: 1px solid rgba(212, 175, 55, 0.15);
-            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8);
+        /* Hide non-active text layers */
+        .lang-content {
+            display: none;
         }
 
-        /* Live Unsplash image showcasing a dark, atmospheric acoustic context */
-        .artist-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            filter: grayscale(40%) contrast(115%) brightness(85%);
-            transition: transform 0.8s ease;
+        .lang-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
         }
 
-        .image-frame:hover .artist-img {
-            transform: scale(1.03);
+        /* --- Dynamic Schedule Matrix (Concerts & TV) --- */
+        .schedule-section {
+            margin-top: 2rem;
+            max-width: 580px;
         }
 
-        /* Opera lighting overlay effect on the portrait */
-        .image-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to top, var(--bg-canvas) 5%, transparent 60%);
-            pointer-events: none;
-        }
-
-        /* --- Minimal Concert Ledger Line --- */
-        .concert-ledger {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-top: 1px solid rgba(138, 130, 121, 0.2);
-            padding-top: 2rem;
-            max-width: 520px;
-        }
-
-        .ledger-title {
+        .schedule-title {
             font-family: var(--font-serif);
-            font-style: italic;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
+            color: var(--brass);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding-bottom: 0.5rem;
         }
 
-        .btn-discover {
+        .schedule-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .schedule-item {
+            display: grid;
+            grid-template-columns: 100px 1fr auto;
+            align-items: center;
+            gap: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(138, 130, 121, 0.15);
+        }
+
+        .item-date {
+            font-family: var(--font-serif);
+            color: var(--ivory);
+            font-size: 1.05rem;
+        }
+
+        .item-tag {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            padding: 0.2rem 0.5rem;
+            border: 1px solid var(--muted-stone);
+            color: var(--muted-stone);
+            display: inline-block;
+            width: fit-content;
+            margin-bottom: 0.3rem;
+            letter-spacing: 1px;
+        }
+
+        .item-tag.tv {
+            border-color: #a63a50;
+            color: #f7b1ab;
+        }
+
+        .item-info h4 {
+            font-size: 1rem;
+            color: var(--ivory);
+            font-weight: 400;
+        }
+
+        .item-info p {
+            font-size: 0.85rem;
+            color: var(--muted-stone);
+        }
+
+        .btn-action {
             font-size: 0.75rem;
             text-transform: uppercase;
             color: var(--brass);
             text-decoration: none;
-            letter-spacing: 2px;
-            border-bottom: 1px solid var(--brass);
-            padding-bottom: 4px;
-            transition: opacity 0.3s;
+            letter-spacing: 1px;
+            border: 1px solid var(--brass);
+            padding: 0.3rem 0.8rem;
+            transition: all 0.3s;
         }
 
-        .btn-discover:hover {
-            opacity: 0.7;
+        .btn-action:hover {
+            background: var(--brass);
+            color: var(--bg-canvas);
         }
 
-        /* --- Responsive Canvas --- */
-        @media (max-width: 1024px) {
+        /* --- Graphical Stage Component (Vector Lady Guitarist Layout) --- */
+        .image-frame {
+            position: sticky;
+            top: 10vh;
+            width: 100%;
+            height: 80vh;
+            border-radius: 2px;
+            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.9);
+            background: radial-gradient(circle at 50% 40%, var(--velvet) 0%, #050404 90%);
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        .silhouette-svg {
+            width: 85%;
+            height: 85%;
+            opacity: 0.85;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Responsive Viewports --- */
+        @media (max-width: 1100px) {
             header { padding: 2rem 4%; }
             .stage-container {
                 grid-template-columns: 1fr;
-                padding: 8rem 4% 4rem 4%;
-                text-align: center;
-            }
-            .philosophy-text, .concert-ledger {
-                margin-left: auto;
-                margin-right: auto;
+                padding: 10rem 4% 4rem 4%;
             }
             .image-frame {
-                height: 60vh;
+                position: relative;
+                top: 0;
+                height: 55vh;
                 max-width: 500px;
-                margin: 0 auto;
+                margin: 2rem auto 0 auto;
             }
         }
     </style>
 </head>
 <body>
 
+    <!-- Header Navigation Container -->
     <header>
-        <a href="#" class="monogram">奏</a>
-        <nav>
-            <a href="#about">The Philosophy</a>
-            <a href="#concerts">Concert Program</a>
-        </nav>
+        <a href="#" class="monogram">YO</a>
+        <!-- Native Language Selection Matrix -->
+        <div class="lang-selector">
+            <button id="btn-ja" class="lang-btn active" onclick="switchLang('ja')">JA</button>
+            <button id="btn-en" class="lang-btn" onclick="switchLang('en')">EN</button>
+            <button id="btn-es" class="lang-btn" onclick="switchLang('es')">ES</button>
+        </div>
     </header>
 
+    <!-- Main Presentation Arena -->
     <main class="stage-container">
         
         <article class="stage-text">
-            <span class="subtitle">Solo Concert Guitarist</span>
-            <h1>Orchestral Scale <span>On Six Strings</span></h1>
+            <span class="subtitle" id="label-subtitle">ギタリスト</span>
+            <h1 id="main-title">Yo <span>六弦の大交響楽</span></h1>
             
-            <p class="philosophy-text" id="about">
-                An eternal student of the grand scores. By removing visual distraction and letting identity blend into the background shadows of the theater, she translates massive <strong>European symphonies</strong> into the fragile, resonant body of a single classical guitar. A translation of pure structural sound, delivered with raw operatic gravity.
-            </p>
+            <!-- Structural Translation Text Matrices -->
+            <div class="content-translation">
+                
+                <!-- Japanese Layer (Default Setup) -->
+                <div id="content-ja" class="lang-content active">
+                    永遠の音楽学徒、<strong>Yo（弦奏）</strong>。彼女は視覚的な個性を劇場の陰影とミディアムヘアの奥へと隠し、鑑賞者の意識を純粋な旋律へと向かわせます。一本のクラシックギターの響きの中に、ヨーロッパの壮大な交響曲を解体・再構築する試み。それは、圧倒的なオペラ的重厚感をもって語られる、終わりのない音への探求です。
+                </div>
 
-            <div class="concert-ledger" id="concerts">
-                <div class="ledger-title">Autumn Symphony Tour 2026</div>
-                <a href="#" class="btn-discover">View Program</a>
+                <!-- English Layer -->
+                <div id="content-en" class="lang-content">
+                    An eternal student of the grand scores. By removing visual distraction and letting her identity blend into the background shadows of the theater, <strong>Yo</strong> translates massive European symphonies into the fragile, resonant body of a single classical guitar. A performance of pure structural sound, delivered with raw operatic gravity.
+                </div>
+                
+                <!-- Spanish Layer -->
+                <div id="content-es" class="lang-content">
+                    Una eterna estudiante de las grandes partituras. Al eliminar la distracción visual y dejar que su identidad se funda en las sombras del teatro, <strong>Yo</strong> traduce majestuosas sinfonías europeas al frágil y resonante cuerpo de una sola guitarra clásica. Una interpretación de puro sonido estructural, ejecutada con una profunda gravedad operística.
+                </div>
+
             </div>
+
+            <!-- Operational Schedule (Concerts, Events & TV Master Ledger) -->
+            <section class="schedule-section">
+                <h3 class="schedule-title" id="schedule-heading">公演・出演スケジュール</h3>
+                <div class="schedule-list" id="schedule-box">
+                    
+                    <!-- Item 1 -->
+                    <div class="schedule-item">
+                        <div class="item-date">10 / 14</div>
+                        <div class="item-info">
+                            <span class="item-tag" id="tag-live-1">Concert</span>
+                            <h4 id="title-live-1">東京オペラシティ / リサイタルホール</h4>
+                            <p id="desc-live-1">ブラームス：交響曲第3番番（全楽章独奏編曲）</p>
+                        </div>
+                        <a href="#" class="btn-action" id="btn-live-1">予約</a>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="schedule-item">
+                        <div class="item-date">11 / 02</div>
+                        <div class="item-info">
+                            <span class="item-tag tv" id="tag-tv-1">TV Broadcast</span>
+                            <h4 id="title-tv-1">NHK BSP「クラシック倶楽部」</h4>
+                            <p id="desc-tv-1">スタジオライブ＆無頭の芸術哲学インタビュー出演</p>
+                        </div>
+                        <a href="#" class="btn-action" id="btn-tv-1">詳細</a>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="schedule-item">
+                        <div class="item-date">11 / 25</div>
+                        <div class="item-info">
+                            <span class="item-tag" id="tag-live-2">Special Event</span>
+                            <h4 id="title-live-2">京都劇場 — 響きの回廊</h4>
+                            <p id="desc-live-2">マーラー交響曲第5番「アダージェット」変奏曲</p>
+                        </div>
+                        <a href="#" class="btn-action" id="btn-live-2">予約</a>
+                    </div>
+
+                </div>
+            </section>
         </article>
 
+        <!-- Dynamic Visual Arena: Embedded Graphical Silhouette of Lady & Guitar -->
         <div class="image-frame">
-            <img src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?auto=format&fit=crop&q=80&w=1000" 
-                 alt="Classical string master performance, moody stage background shadow posture focus" 
-                 class="artist-img">
-            <div class="image-overlay"></div>
+            <svg class="silhouette-svg" viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Background Lighting Halo -->
+                <circle cx="200" cy="220" r="110" fill="#d4af37" fill-opacity="0.04"/>
+                
+                <!-- Hair Outline (Medium Short Neck Length) -->
+                <path d="M150 150C150 110 170 90 200 90C230 90 250 110 250 150C250 190 245 220 240 230C235 210 230 180 200 180C170 180 165 210 160 230C155 220 150 190 150 150Z" fill="#040303"/>
+                <path d="M155 160C150 190 158 225 162 240C165 242 170 235 170 220C170 190 180 185 200 185C220 185 230 190 230 220C230 235 235 242 238 240C242 225 250 190 245 160C240 120 230 100 200 100C170 100 160 120 155 160Z" fill="#0c0909"/>
+                
+                <!-- Dress & Torso Shadow Alignment -->
+                <path d="M140 290C160 270 180 265 200 265C220 265 240 270 260 290L280 450H120L140 290Z" fill="#050304"/>
+                <path d="M150 310C170 295 185 290 200 290C215 290 230 295 250 310L270 450H130L150 310Z" fill="#21080b"/>
+                
+                <!-- Classical Guitar Dynamic Vector Backdrop Layer -->
+                <path d="M245 270C275 270 295 290 295 320C295 350 270 365 250 375C275 385 290 410 290 440C290 475 260 495 215 495C170 495 155 465 155 440C155 410 170 385 195 375C175 365 160 350 160 320C160 290 180 270 210 270C225 270 235 275 245 270Z" stroke="#d4af37" stroke-width="1.5" stroke-opacity="0.25" fill="#140608" fill-opacity="0.4"/>
+                <!-- Soundhole Circle -->
+                <circle cx="225" cy="355" r="22" stroke="#d4af37" stroke-width="1" stroke-opacity="0.3"/>
+                <!-- Guitar Neck Line -->
+                <line x1="225" y1="355" x2="275" y2="170" stroke="#d4af37" stroke-width="4" stroke-opacity="0.3"/>
+            </svg>
         </div>
 
     </main>
 
+    <!-- Trans-National UI Engine Script -->
+    <script>
+        const uiMatrix = {
+            ja: {
+                subtitle: "ギタリスト",
+                title: "Yo <span>六弦の大交響楽</span>",
+                heading: "公演・出演スケジュール",
+                l1Tag: "Concert", l1Title: "東京オペラシティ / リサイタルホール", l1Desc: "ブラームス：交響曲第3番（全楽章独奏編曲）", l1Btn: "予約",
+                tvTag: "TV Broadcast", tvTitle: "NHK BSP「クラシック倶楽部」", tvDesc: "スタジオライブ＆無頭の芸術哲学インタビュー出演", tvBtn: "詳細",
+                l2Tag: "Special Event", l2Title: "京都劇場 — 響きの回廊", l2Desc: "マーラー交響曲第5番「アダージェット」変奏曲", l2Btn: "予約"
+            },
+            en: {
+                subtitle: "Concert Guitarist",
+                title: "Yo <span>Orchestral Scale on Six Strings</span>",
+                heading: "Performance & Broadcast Schedule",
+                l1Tag: "Concert", l1Title: "Tokyo Opera City / Recital Hall", l1Desc: "Brahms: Symphony No. 3 (Complete Solo Arrangement)", l1Btn: "Tickets",
+                tvTag: "TV Show", tvTitle: "NHK BSP 'Classic Club'", tvDesc: "Studio performance & faceless musical philosophy interview", tvBtn: "View",
+                l2Tag: "Special Event", l2Title: "Kyoto Theatre — Echoing Corridor", l2Desc: "Mahler: Symphony No. 5 'Adagietto' Variations", l2Btn: "Tickets"
+            },
+            es: {
+                subtitle: "Guitarrista de Concierto",
+                title: "Yo <span>Escala Orquestal en Seis Cuerdas</span>",
+                heading: "Calendario de Eventos y Programas",
+                l1Tag: "Concierto", l1Title: "Tokyo Opera City / Recital Hall", l1Desc: "Brahms: Sinfonía n.º 3 (Arreglo completo para solista)", l1Btn: "Boletos",
+                tvTag: "Programa TV", tvTitle: "NHK BSP 'Classic Club'", tvDesc: "Actuación en estudio y entrevista de filosofía musical sin rostro", tvBtn: "Ver",
+                l2Tag: "Evento Especial", l2Title: "Kyoto Theatre — Corredor de Ecos", l2Desc: "Mahler: Sinfonía n.º 5 Variaciones de 'Adagietto'", l2Btn: "Boletos"
+            }
+        };
+
+        function switchLang(langCode) {
+            // Update active state class on navigation targets
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`btn-${langCode}`).classList.add('active');
+
+            // Toggle Text Content Elements
+            document.querySelectorAll('.lang-content').forEach(c => c.classList.remove('active'));
+            document.getElementById(`content-${langCode}`).classList.add('active');
+
+            // Dynamically alter labels across the matrix elements
+            document.getElementById('label-subtitle').innerText = uiMatrix[langCode].subtitle;
+            document.getElementById('main-title').innerHTML = uiMatrix[langCode].title;
+            document.getElementById('schedule-heading').innerText = uiMatrix[langCode].heading;
+            
+            // Item 1 Elements
+            document.getElementById('tag-live-1').innerText = uiMatrix[langCode].l1Tag;
+            document.getElementById('title-live-1').innerText = uiMatrix[langCode].l1Title;
+            document.getElementById('desc-live-1').innerText = uiMatrix[langCode].l1Desc;
+            document.getElementById('btn-live-1').innerText = uiMatrix[langCode].l1Btn;
+
+            // Item 2 Elements
+            document.getElementById('tag-tv-1').innerText = uiMatrix[langCode].tvTag;
+            document.getElementById('title-tv-1').innerText = uiMatrix[langCode].tvTitle;
+            document.getElementById('desc-tv-1').innerText = uiMatrix[langCode].tvDesc;
+            document.getElementById('btn-tv-1').innerText = uiMatrix[langCode].tvBtn;
+
+            // Item 3 Elements
+            document.getElementById('tag-live-2').innerText = uiMatrix[langCode].l2Tag;
+            document.getElementById('title-live-2').innerText = uiMatrix[langCode].l2Title;
+            document.getElementById('desc-live-2').innerText = uiMatrix[langCode].l2Desc;
+            document.getElementById('btn-live-2').innerText = uiMatrix[langCode].l2Btn;
+        }
+    </script>
 </body>
 </html>
