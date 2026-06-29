@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Symphony Soloist — Classical Guitar</title>
+    <style>
+        /* --- Artistic Core System --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-canvas: #0d0b09; /* Deep charcoal warm wood ash */
+            --velvet: #3d0c11;    /* Deep opera house velvet curtain shadow */
+            --brass: #d4af37;     /* Antique instrument gold */
+            --ivory: #f9f6f0;     /* Soft manuscript paper tone */
+            --muted-stone: #8a8279;
+            --font-serif: 'Playfair Display', 'Georgia', serif;
+            --font-sans: 'Montserrat', 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-canvas);
+            color: var(--ivory);
+            font-family: var(--font-sans);
+            letter-spacing: 1px;
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        /* --- Minimal Navigation --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 3rem 6%;
+            position: absolute;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .monogram {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: var(--brass);
+            text-decoration: none;
+            border: 1px solid var(--brass);
+            padding: 0.3rem 0.8rem;
+        }
+
+        nav a {
+            color: var(--ivory);
+            text-decoration: none;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-left: 3rem;
+            transition: color 0.4s;
+        }
+
+        nav a:hover {
+            color: var(--brass);
+        }
+
+        /* --- Hero / Stage Split Layout --- */
+        .stage-container {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            align-items: center;
+            padding: 0 6%;
+            gap: 4rem;
+            background: radial-gradient(circle at 10% 20%, #1a1215 0%, var(--bg-canvas) 80%);
+        }
+
+        /* Artistic Typography Grid */
+        .stage-text {
+            padding-top: 4rem;
+        }
+
+        .subtitle {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            color: var(--brass);
+            letter-spacing: 6px;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        h1 {
+            font-family: var(--font-serif);
+            font-size: clamp(3rem, 5vw, 5.5rem);
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 2.5rem;
+            color: var(--ivory);
+        }
+
+        h1 span {
+            display: block;
+            font-style: italic;
+            color: var(--muted-stone);
+            font-size: 0.8em;
+        }
+
+        /* Narrative Block */
+        .philosophy-text {
+            color: var(--muted-stone);
+            font-size: 1.05rem;
+            max-width: 520px;
+            margin-bottom: 3rem;
+        }
+
+        .philosophy-text strong {
+            color: var(--ivory);
+            font-weight: 500;
+        }
+
+        /* --- Dramatic Image Canvas --- */
+        .image-frame {
+            position: relative;
+            width: 100%;
+            height: 75vh;
+            border-radius: 2px;
+            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Live Unsplash image showcasing a dark, atmospheric acoustic context */
+        .artist-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            filter: grayscale(40%) contrast(115%) brightness(85%);
+            transition: transform 0.8s ease;
+        }
+
+        .image-frame:hover .artist-img {
+            transform: scale(1.03);
+        }
+
+        /* Opera lighting overlay effect on the portrait */
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, var(--bg-canvas) 5%, transparent 60%);
+            pointer-events: none;
+        }
+
+        /* --- Minimal Concert Ledger Line --- */
+        .concert-ledger {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid rgba(138, 130, 121, 0.2);
+            padding-top: 2rem;
+            max-width: 520px;
+        }
+
+        .ledger-title {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 1.2rem;
+        }
+
+        .btn-discover {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--brass);
+            text-decoration: none;
+            letter-spacing: 2px;
+            border-bottom: 1px solid var(--brass);
+            padding-bottom: 4px;
+            transition: opacity 0.3s;
+        }
+
+        .btn-discover:hover {
+            opacity: 0.7;
+        }
+
+        /* --- Responsive Canvas --- */
+        @media (max-width: 1024px) {
+            header { padding: 2rem 4%; }
+            .stage-container {
+                grid-template-columns: 1fr;
+                padding: 8rem 4% 4rem 4%;
+                text-align: center;
+            }
+            .philosophy-text, .concert-ledger {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .image-frame {
+                height: 60vh;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="monogram">奏</a>
+        <nav>
+            <a href="#about">The Philosophy</a>
+            <a href="#concerts">Concert Program</a>
+        </nav>
+    </header>
+
+    <main class="stage-container">
+        
+        <article class="stage-text">
+            <span class="subtitle">Solo Concert Guitarist</span>
+            <h1>Orchestral Scale <span>On Six Strings</span></h1>
+            
+            <p class="philosophy-text" id="about">
+                An eternal student of the grand scores. By removing visual distraction and letting identity blend into the background shadows of the theater, she translates massive <strong>European symphonies</strong> into the fragile, resonant body of a single classical guitar. A translation of pure structural sound, delivered with raw operatic gravity.
+            </p>
+
+            <div class="concert-ledger" id="concerts">
+                <div class="ledger-title">Autumn Symphony Tour 2026</div>
+                <a href="#" class="btn-discover">View Program</a>
+            </div>
+        </article>
+
+        <div class="image-frame">
+            <img src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?auto=format&fit=crop&q=80&w=1000" 
+                 alt="Classical string master performance, moody stage background shadow posture focus" 
+                 class="artist-img">
+            <div class="image-overlay"></div>
+        </div>
+
+    </main>
+
+</body>
+</html>
