@@ -31,7 +31,7 @@
             padding: 0 15px;
         }
 
-        /* --- HEADER & NAVIGATION (MATCHED TO REFERENCE IMAGE) --- */
+        /* --- HEADER & NAVIGATION --- */
         .site-header {
             background-color: #ffffff;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
@@ -270,7 +270,7 @@
             transform: translateY(-2px);
         }
 
-        /* --- NEWS & COURSES SPLIT SECTION (REALIGNED) --- */
+        /* --- NEWS & COURSES SPLIT SECTION --- */
         .news-courses-section {
             background-color: #ffffff;
             padding: 50px 0;
@@ -347,6 +347,7 @@
         }
 
         .news-video-container {
+            position: relative;
             width: 100%;
             border-radius: 4px;
             overflow: hidden;
@@ -358,6 +359,33 @@
             width: 100%;
             height: auto;
             display: block;
+        }
+
+        /* Unmute Button Overlay */
+        .unmute-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(15, 27, 92, 0.85);
+            color: #ffffff;
+            border: 2px solid #22c55e;
+            padding: 8px 16px;
+            font-size: 14px;
+            font-weight: 700;
+            border-radius: 20px;
+            cursor: pointer;
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .unmute-btn:hover {
+            background-color: #22c55e;
+            color: #ffffff;
+            transform: scale(1.05);
         }
 
         .courses-sidebar-col {
@@ -722,17 +750,14 @@
     <header class="site-header">
         <div class="container">
             <div class="header-inner">
-                <!-- Logo -->
                 <div class="logo">
                     <a href="http://nimas.in/">
                         <img src="https://i.postimg.cc/FsX6vKn5/nimaslogo.png" alt="NIMAS Logo">
                     </a>
                 </div>
 
-                <!-- Mobile Toggle Button -->
                 <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation">&#9776;</button>
 
-                <!-- Navigation Menu -->
                 <nav class="main-nav" id="mainNav">
                     <ul class="nav-menu">
                         <li class="active"><a href="http://nimas.in/">Home</a></li>
@@ -794,7 +819,6 @@
         </div>
     </header>
 
-    <!-- Main Content Area -->
     <main>
         <!-- First Custom Image Slider Section -->
         <section class="slider-section">
@@ -861,7 +885,7 @@
             </div>
         </section>
 
-        <!-- NEWS & UPDATES / COURSES OFFERED (CONTAINER ALIGNED) -->
+        <!-- NEWS & UPDATES / COURSES OFFERED -->
         <section class="news-courses-section">
             <div class="container">
                 <div class="news-courses-grid">
@@ -882,8 +906,12 @@
                             </div>
                         </div>
 
+                        <!-- Video Container with Dedicated Unmute Button -->
                         <div class="news-video-container">
-                            <video id="nimasVideo" controls autoplay playsinline>
+                            <button class="unmute-btn" id="unmuteBtn">
+                                🔊 Click to Unmute Sound
+                            </button>
+                            <video id="nimasVideo" controls autoplay muted playsinline preload="auto">
                                 <source src="https://pub-4d866113886f4fddadce98b3cae0854b.r2.dev/nimas/nimas-file.mp4" type="video/mp4">
                                 Your browser does not support the video tag.
                             </video>
@@ -1121,12 +1149,23 @@
                 });
             }
 
+            // Dedicated Unmute Logic
             const video = document.getElementById('nimasVideo');
+            const unmuteBtn = document.getElementById('unmuteBtn');
+
             if (video) {
-                video.muted = false;
-                video.play().catch(function(error) {
-                    console.log("Autoplay with audio prevented by browser policy:", error);
+                // Ensure video plays muted initially (required for autoplay)
+                video.play().catch(function(err) {
+                    console.log("Autoplay blocked:", err);
                 });
+
+                if (unmuteBtn) {
+                    unmuteBtn.addEventListener('click', function() {
+                        video.muted = false;
+                        video.play();
+                        unmuteBtn.style.display = 'none'; // Hide button after unmuting
+                    });
+                }
             }
         });
     </script>
