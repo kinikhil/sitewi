@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex Pickleball Academy | Mumbai</title>
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-dark: #0b0f19;
+            --card-bg: #151c2c;
+            --accent-green: #00ff66;
+            --accent-glow: rgba(0, 255, 102, 0.25);
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --font-head: 'Syne', sans-serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-head);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: var(--accent-green);
+            color: #000;
+            font-weight: 700;
+            padding: 14px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px var(--accent-glow);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(0, 255, 102, 0.5);
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: #fff;
+            font-weight: 700;
+            padding: 14px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-3px);
+            background: #20ba5a;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .section-title span { color: var(--accent-green); }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(11, 15, 25, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-head);
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .logo span { color: var(--accent-green); }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav a:hover { color: var(--accent-green); }
+
+        /* HERO SECTION */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(180deg, rgba(11,15,25,0.65) 0%, var(--bg-dark) 100%),
+                        url('https://i.postimg.cc/ryDGCVbq/pcourt.jpg') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .section-padding { padding: 6rem 5%; }
+
+        /* COURTS GRID */
+        .courts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .court-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s;
+        }
+
+        .court-card:hover { transform: translateY(-10px); }
+
+        .court-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .court-info { padding: 1.5rem; }
+
+        /* EQUIPMENT & FACILITIES GRID */
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .facility-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            text-align: left;
+        }
+
+        .facility-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .facility-content {
+            padding: 1.5rem;
+        }
+
+        .facility-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* TOURNAMENTS */
+        .tournament-card {
+            background: linear-gradient(135deg, rgba(21, 28, 44, 1) 0%, rgba(15, 23, 42, 1) 100%);
+            border: 2px solid var(--accent-green);
+            border-radius: 20px;
+            padding: 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            box-shadow: 0 0 30px rgba(0, 255, 102, 0.1);
+        }
+
+        .prize-tag {
+            font-size: 2.2rem;
+            color: var(--accent-green);
+            font-weight: 800;
+        }
+
+        /* FOUNDERS */
+        .founders-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+
+        .founder-card {
+            text-align: center;
+            background: var(--card-bg);
+            padding: 2rem 1.5rem;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+        }
+
+        .founder-card img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            border: 3px solid var(--accent-green);
+            object-fit: cover;
+        }
+
+        /* CONTACT & TIMINGS */
+        .info-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .info-card {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+        }
+
+        .info-list li {
+            list-style: none;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .contact-btns {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 5% 1.5rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            .info-wrapper { grid-template-columns: 1fr; }
+            nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <a href="#" class="logo">APEX<span>.PB</span></a>
+        <nav>
+            <a href="#courts">Our Courts</a>
+            <a href="#equipment">Paddles & Gear</a>
+            <a href="#tournaments">Tournaments</a>
+            <a href="#founders">Founders</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <a href="https://wa.me/919876543210" class="btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp</a>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Mumbai’s Premier<br><span style="color: var(--accent-green);">Pickleball Academy</span></h1>
+            <p>Play on high-grade acrylic courts with carbon paddles, box nets, and professional night floodlights.</p>
+            <div class="hero-btns">
+                <a href="#contact" class="btn-primary"><i class="fa-solid fa-calendar-check"></i> Book Court Slot</a>
+                <a href="https://wa.me/919876543210" class="btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> WhatsApp Booking</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- COURTS GALLERY SECTION -->
+    <section id="courts" class="section-padding">
+        <h2 class="section-title">Academy <span>Courts</span></h2>
+        <div class="courts-grid">
+            <div class="court-card">
+                <img src="https://i.postimg.cc/ryDGCVbq/pcourt.jpg" alt="Pickleball Court 1">
+                <div class="court-info">
+                    <h3>Court 1 (Main Arena)</h3>
+                    <p style="color: var(--text-muted);">Pro acrylic surface, official regulation 36" center box net, LED floodlighting.</p>
+                </div>
+            </div>
+            <div class="court-card">
+                <img src="https://i.postimg.cc/Kc17rGVZ/pcourt2.jpg" alt="Pickleball Court 2">
+                <div class="court-info">
+                    <h3>Court 2 (Indoor Air-Conditioned)</h3>
+                    <p style="color: var(--text-muted);">Climate-controlled indoor court with non-slip high-cushion flooring.</p>
+                </div>
+            </div>
+            <div class="court-card">
+                <img src="https://i.postimg.cc/nVXKYF5F/pcourt3.jpg" alt="Pickleball Court 3">
+                <div class="court-info">
+                    <h3>Court 3 (Practice & Drills)</h3>
+                    <p style="color: var(--text-muted);">Dedicated training court equipped for single practice, coaching, and group drills.</p>
+                </div>
+            </div>
+            <div class="court-card">
+                <img src="https://i.postimg.cc/T2KjqdSY/pcourt4.jpg" alt="Pickleball Court 4">
+                <div class="court-info">
+                    <h3>Court 4 (Outdoor Night Court)</h3>
+                    <p style="color: var(--text-muted);">Open-air evening match play with anti-glare overhead stadium floodlights.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EQUIPMENT & FACILITIES -->
+    <section id="equipment" class="section-padding" style="background: rgba(255,255,255,0.01);">
+        <h2 class="section-title">Gear & <span>Rental Facilities</span></h2>
+        <div class="facilities-grid">
+            <div class="facility-card">
+                <img src="https://i.postimg.cc/ryDGCVbq/pcourt.jpg" alt="Pickleball Paddles">
+                <div class="facility-content">
+                    <h3>Pickleball Paddles on Rent</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Carbon fiber & graphite composite paddles available for beginner, intermediate, and pro players.</p>
+                </div>
+            </div>
+            <div class="facility-card">
+                <img src="https://i.postimg.cc/Kc17rGVZ/pcourt2.jpg" alt="Pickleball Balls and Gear">
+                <div class="facility-content">
+                    <h3>Perforated Balls & Gear</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">USAPA-standard 40-hole outdoor & 26-hole indoor pickleball balls available at the reception desk.</p>
+                </div>
+            </div>
+            <div class="facility-card">
+                <img src="https://i.postimg.cc/nVXKYF5F/pcourt3.jpg" alt="Box Nets">
+                <div class="facility-content">
+                    <h3>Official Box Nets</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Heavy-duty steel-frame 22-foot regulation box nets pre-set on every single court.</p>
+                </div>
+            </div>
+            <div class="facility-card">
+                <img src="https://i.postimg.cc/T2KjqdSY/pcourt4.jpg" alt="Group and Monthly Court Booking">
+                <div class="facility-content">
+                    <h3>Group & Monthly Booking</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Reserve full court blocks for group matches, corporate tournaments, or recurring monthly slots.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TOURNAMENTS & PRIZES -->
+    <section id="tournaments" class="section-padding">
+        <h2 class="section-title">Tournament <span>Announcements</span></h2>
+        <div class="tournament-card">
+            <div>
+                <span style="background: var(--accent-green); color: #000; padding: 4px 12px; border-radius: 20px; font-weight: 700; font-size: 0.8rem;">REGISTRATION OPEN</span>
+                <h3 style="font-size: 2rem; margin: 0.5rem 0;">Mumbai Pickleball Open Slam 2026</h3>
+                <p style="color: var(--text-muted);"><i class="fa-regular fa-calendar"></i> August 15 – 17, 2026 | Men's, Women's & Mixed Doubles</p>
+            </div>
+            <div>
+                <p style="font-size: 0.9rem; color: var(--text-muted);">TOTAL CASH PRIZE</p>
+                <div class="prize-tag">₹2,50,000</div>
+            </div>
+            <div>
+                <a href="https://wa.me/919876543210?text=I%20want%20to%20register%20for%20the%20Pickleball%20Tournament" class="btn-primary" target="_blank">Register via WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOUNDERS -->
+    <section id="founders" class="section-padding" style="background: rgba(255,255,255,0.01);">
+        <h2 class="section-title">Academy <span>Founders</span></h2>
+        <div class="founders-grid">
+            <div class="founder-card">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80" alt="Ananya Sharma Founder">
+                <h3>Ananya Sharma</h3>
+                <p style="color: var(--accent-green); font-size: 0.9rem;">Co-Founder & Head Coach</p>
+                <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.5rem;">Certified pickleball instructor with 8+ years experience in performance racket sports.</p>
+            </div>
+            <div class="founder-card">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80" alt="Rohan Mehta Founder">
+                <h3>Rohan Mehta</h3>
+                <p style="color: var(--accent-green); font-size: 0.9rem;">Co-Founder & Director</p>
+                <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.5rem;">Pioneer in constructing professional indoor and outdoor pickleball infrastructure across Mumbai.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TIMINGS, SLOTS & CONTACT -->
+    <section id="contact" class="section-padding">
+        <h2 class="section-title">Timings & <span>Location</span></h2>
+        <div class="info-wrapper">
+            <div class="info-card">
+                <h3><i class="fa-regular fa-clock" style="color: var(--accent-green);"></i> Court Timings & Slots</h3>
+                <br>
+                <ul class="info-list">
+                    <li><span>Morning Slots</span> <span>06:00 AM – 11:00 AM</span></li>
+                    <li><span>Afternoon Slots</span> <span>11:00 AM – 04:00 PM</span></li>
+                    <li><span>Evening Peak Slots</span> <span>04:00 PM – 11:00 PM</span></li>
+                </ul>
+                <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 1rem;">*60-minute time slots available for hourly booking, group sessions, or monthly memberships.</p>
+            </div>
+
+            <div class="info-card">
+                <h3><i class="fa-solid fa-location-dot" style="color: var(--accent-green);"></i> Mumbai Academy Address</h3>
+                <br>
+                <p><strong>Apex Pickleball Academy</strong></p>
+                <p style="color: var(--text-muted); margin-bottom: 1rem;">
+                    Plot No. 42, Sports Arena Zone, New Link Road,<br>
+                    Andheri West, Mumbai, Maharashtra 400053
+                </p>
+                
+                <div class="contact-btns">
+                    <a href="tel:+919876543210" class="btn-primary"><i class="fa-solid fa-phone"></i> Call Us: +91 98765 43210</a>
+                    <a href="https://wa.me/919876543210?text=Hi,%20I%20want%20to%20book%20a%20pickleball%20court%20slot." class="btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> WhatsApp: +91 98765 43210</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Apex Pickleball Academy Mumbai. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
