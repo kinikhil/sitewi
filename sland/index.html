@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LandMark Developers | Nature-Centric Plot Investments in Pune</title>
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- NATURE & EARTH PALETTE --- */
+        :root {
+            --bg-bright: #F7F9F6;          /* Off-white organic green tint */
+            --bg-card: #FFFFFF;            /* Pure clean white */
+            --primary-green: #1b4d3e;     /* Deep forest emerald */
+            --accent-green: #2d8a64;      /* Vibrant leaf green */
+            --light-green: #eaf3ed;       /* Fresh mint badge bg */
+            --warm-gold: #c68a2c;         /* Warm earth gold */
+            --text-dark: #1e2923;          /* Soft charcoal text */
+            --text-muted: #5a6e63;         /* Muted sage-gray text */
+            --border-color: #d8e5dd;      /* Subtle organic border */
+            --font-head: 'Outfit', sans-serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-bright);
+            color: var(--text-dark);
+            font-family: var(--font-body);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-head);
+            color: var(--primary-green);
+        }
+
+        /* --- BUTTONS --- */
+        .btn-green {
+            background: var(--primary-green);
+            color: #ffffff;
+            font-weight: 700;
+            padding: 14px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(27, 77, 62, 0.2);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-green:hover {
+            background: var(--accent-green);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(45, 138, 100, 0.3);
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: #ffffff;
+            font-weight: 700;
+            padding: 14px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2);
+        }
+
+        .btn-whatsapp:hover {
+            background: #20ba5a;
+            transform: translateY(-2px);
+        }
+
+        .section-padding { padding: 5rem 6%; }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.4rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .section-title span {
+            color: var(--accent-green);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--warm-gold);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            margin-bottom: 0.4rem;
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-head);
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--primary-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo i { color: var(--accent-green); }
+
+        nav a {
+            color: var(--text-dark);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav a:hover { color: var(--accent-green); }
+
+        /* --- BRIGHT & VIBRANT HERO SECTION --- */
+        .hero {
+            min-height: 92vh;
+            background: linear-gradient(180deg, rgba(255,255,255,0.15) 0%, rgba(247,249,246,0.6) 100%),
+                        url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=2000&q=90') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 1rem 4rem;
+        }
+
+        .hero-content {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 3.5rem 2.5rem;
+            border-radius: 24px;
+            border: 2px solid rgba(45, 138, 100, 0.2);
+            max-width: 850px;
+            box-shadow: 0 20px 50px rgba(27, 77, 62, 0.12);
+        }
+
+        .hero-content h1 {
+            font-size: 3.2rem;
+            margin-bottom: 1rem;
+            line-height: 1.25;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin: 0 auto 2rem;
+        }
+
+        .price-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--light-green);
+            border: 1px solid var(--border-color);
+            color: var(--primary-green);
+            padding: 8px 22px;
+            border-radius: 30px;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+        }
+
+        /* --- CATEGORIES SECTION --- */
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2.2rem 1.8rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent-green);
+            box-shadow: 0 10px 30px rgba(45, 138, 100, 0.1);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--light-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.2rem;
+        }
+
+        .card-icon i {
+            font-size: 1.6rem;
+            color: var(--primary-green);
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* --- SCHEMES ON NAGAR ROAD --- */
+        .schemes-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+
+        .scheme-card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            transition: transform 0.3s;
+        }
+
+        .scheme-card:hover { transform: translateY(-6px); }
+
+        .scheme-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .scheme-content {
+            padding: 1.8rem;
+        }
+
+        .scheme-price {
+            color: var(--warm-gold);
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin: 0.5rem 0;
+        }
+
+        .tag {
+            background: var(--light-green);
+            color: var(--primary-green);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        /* --- BUYING OPTIONS --- */
+        .buying-options {
+            background: var(--light-green);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 3.5rem;
+            margin-top: 2rem;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .option-box {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+        }
+
+        /* --- CONTACT & FORM --- */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2.5rem;
+        }
+
+        .contact-info-card {
+            background: var(--bg-card);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+        }
+
+        .form-card {
+            background: var(--bg-card);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.4rem;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            background: var(--bg-bright);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-dark);
+            font-family: inherit;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-green);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            border-top: 1px solid var(--border-color);
+            background: #ffffff;
+            padding: 3rem 6% 1.5rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.2rem; }
+            .hero-content { padding: 2rem 1.2rem; }
+            .options-grid, .contact-wrapper { grid-template-columns: 1fr; }
+            nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <a href="#" class="logo"><i class="fa-solid fa-seedling"></i> LAND<span>MARK</span></a>
+        <nav>
+            <a href="#plots">Plot Types</a>
+            <a href="#schemes">Nagar Road Schemes</a>
+            <a href="#buying-models">Group & Individual</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <a href="https://wa.me/919876543210?text=Hi,%20I%20am%20interested%20in%20plots%20on%20Nagar%20Road." class="btn-whatsapp" target="_blank">
+            <i class="fa-brands fa-whatsapp"></i> WhatsApp Us
+        </a>
+    </header>
+
+    <!-- BRIGHT HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="price-badge">
+                <i class="fa-solid fa-leaf"></i> Budget Range: ₹60,000 to ₹1 Crore
+            </div>
+            <h1>Sunlit & Prime Plot Investments Across <span style="color: var(--accent-green);">Nagar Road, Pune</span></h1>
+            <p>Explore lush, fertile agricultural plots and Collector-approved NA bungalow layouts in Pune's most thriving green corridor.</p>
+            <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+                <a href="#schemes" class="btn-green"><i class="fa-solid fa-map-location-dot"></i> View Active Schemes</a>
+                <a href="#contact" class="btn-whatsapp"><i class="fa-solid fa-phone"></i> Direct Consultation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PLOT CATEGORIES -->
+    <section id="plots" class="section-padding">
+        <div class="section-subtitle">Nature & Growth</div>
+        <h2 class="section-title">Specialized <span>Land Offerings</span></h2>
+        
+        <div class="grid-4">
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-wheat-awn"></i></div>
+                <h3>Agricultural Land</h3>
+                <p>Fertile agricultural parcels ideal for organic farming, long-term wealth creation, or farmhouse retreats.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <h3>Non-Agricultural (NA) Plots</h3>
+                <p>Collector/PMRDA approved NA plots with demarcated boundaries, internal roads, and water-electricity touchpoints.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-house-chimney-window"></i></div>
+                <h3>Bungalow Plots</h3>
+                <p>Gated community bungalow plots surrounded by greenery, landscaped parks, and calm living zones.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-piggy-bank"></i></div>
+                <h3>Micro Investment Plots</h3>
+                <p>Entry-level land holdings starting from just ₹60,000 designed for budget-conscious first-time land buyers.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACTIVE SCHEMES ON NAGAR ROAD -->
+    <section id="schemes" class="section-padding" style="background: #ffffff;">
+        <div class="section-subtitle">Prime Pune Locations</div>
+        <h2 class="section-title">Nagar Road <span>Plot Schemes</span></h2>
+
+        <div class="schemes-wrapper">
+            <!-- Scheme 1 -->
+            <div class="scheme-card">
+                <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=600&q=80" alt="Wagholi Lonikand Green Sector">
+                <div class="scheme-content">
+                    <span class="tag">Collector NA Approved</span>
+                    <h3 style="margin-top:0.6rem;">Nagar Road Axis (Wagholi Annex / Lonikand)</h3>
+                    <div class="scheme-price">₹15 Lakhs – ₹45 Lakhs</div>
+                    <p style="color:var(--text-muted); font-size:0.9rem;">Gated bungalow layouts with wide internal tree-lined roads, individual water taps, and clear title documentation.</p>
+                </div>
+            </div>
+
+            <!-- Scheme 2 -->
+            <div class="scheme-card">
+                <img src="https://images.unsplash.com/photo-1628624747186-a941c476b7ef?auto=format&fit=crop&w=600&q=80" alt="Shikrapur Land Zone">
+                <div class="scheme-content">
+                    <span class="tag">High Growth Belt</span>
+                    <h3 style="margin-top:0.6rem;">Shikrapur Strategic Corridor</h3>
+                    <div class="scheme-price">₹40 Lakhs – ₹1 Crore</div>
+                    <p style="color:var(--text-muted); font-size:0.9rem;">Large NA & scenic agricultural plots suitable for farmhouses, personal estates, or commercial land banking.</p>
+                </div>
+            </div>
+
+            <!-- Scheme 3 -->
+            <div class="scheme-card">
+                <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=600&q=80" alt="Shirur Micro Land">
+                <div class="scheme-content">
+                    <span class="tag">Micro Budget Scheme</span>
+                    <h3 style="margin-top:0.6rem;">Ranjangaon / Shirur Belt</h3>
+                    <div class="scheme-price">₹60,000 – ₹5 Lakhs</div>
+                    <p style="color:var(--text-muted); font-size:0.9rem;">Affordable entry-level plot options for long-term appreciation in Pune's industrial-agricultural expansion zone.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BUYING MODELS -->
+    <section id="buying-models" class="section-padding">
+        <div class="buying-options">
+            <div class="section-subtitle" style="text-align:left;">Flexible Purchasing Options</div>
+            <h2 style="font-size:2rem;">Individual & <span>Group Land Buying</span></h2>
+
+            <div class="options-grid">
+                <div class="option-box">
+                    <h3 style="color:var(--primary-green); font-size:1.3rem; margin-bottom:0.6rem;">
+                        <i class="fa-solid fa-user-check" style="color:var(--accent-green); margin-right:8px;"></i> Individual Buying
+                    </h3>
+                    <p style="color:var(--text-muted);">Direct clear-title plot purchases with individual 7/12 extract registration, demarcated fencing, and immediate legal handovers for your family home or personal portfolio.</p>
+                </div>
+                <div class="option-box">
+                    <h3 style="color:var(--primary-green); font-size:1.3rem; margin-bottom:0.6rem;">
+                        <i class="fa-solid fa-users-gear" style="color:var(--accent-green); margin-right:8px;"></i> Group & Syndicate Buying
+                    </h3>
+                    <p style="color:var(--text-muted);">Combine buying power with co-investors, friends, or family to acquire larger land acres at bulk rates, splitting into customized sub-plots with shared development savings.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT & FORM -->
+    <section id="contact" class="section-padding">
+        <div class="section-subtitle">Get In Touch</div>
+        <h2 class="section-title">Schedule a <span>Site Visit</span></h2>
+
+        <div class="contact-wrapper">
+            <div class="contact-info-card">
+                <h3 style="color:var(--primary-green); font-size:1.5rem; margin-bottom:0.8rem;">LandMark Developers</h3>
+                <p style="color:var(--text-muted); margin-bottom:1.5rem;">Your trusted, nature-centric land partner on the Nagar Road growth corridor, Pune.</p>
+                
+                <p style="margin-bottom:1rem;"><i class="fa-solid fa-location-dot" style="color:var(--accent-green); margin-right:10px;"></i> Office No. 402, Green Arcade, Nagar Road, Wagholi, Pune, MH 412207</p>
+                <p style="margin-bottom:1rem;"><i class="fa-solid fa-phone" style="color:var(--accent-green); margin-right:10px;"></i> +91 98765 43210 / +91 91234 56789</p>
+                <p style="margin-bottom:2rem;"><i class="fa-solid fa-envelope" style="color:var(--accent-green); margin-right:10px;"></i> sales@landmarkplotspune.com</p>
+
+                <a href="https://wa.me/919876543210?text=I%20want%20to%20book%20a%20site%20visit" class="btn-whatsapp" target="_blank" style="width:100%; justify-content:center;">
+                    <i class="fa-brands fa-whatsapp"></i> Book Site Visit via WhatsApp
+                </a>
+            </div>
+
+            <form class="form-card">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" class="form-control" placeholder="e.g. Amit Patil" required>
+                </div>
+                <div class="form-group">
+                    <label>Mobile Number</label>
+                    <input type="tel" class="form-control" placeholder="+91 98765 43210" required>
+                </div>
+                <div class="form-group">
+                    <label>Investment Budget</label>
+                    <select class="form-control">
+                        <option>₹60,000 – ₹5 Lakhs (Micro Investment Plot)</option>
+                        <option>₹5 Lakhs – ₹20 Lakhs</option>
+                        <option>₹20 Lakhs – ₹50 Lakhs (Bungalow / NA Plot)</option>
+                        <option>₹50 Lakhs – ₹1 Crore (Large Farmhouse / Agricultural)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Plot Type Preference</label>
+                    <select class="form-control">
+                        <option>Agricultural Land</option>
+                        <option>Non-Agricultural (NA) Plot</option>
+                        <option>Gated Bungalow Plot</option>
+                        <option>Group / Syndicate Buying</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-green" style="width:100%; justify-content:center; margin-top:1rem;">Submit Inquiry</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; LandMark Developers Pune. All Rights Reserved. Disclaimer: Plot availability and layout permissions subject to local PMRDA / Collector guidelines.</p>
+    </footer>
+
+</body>
+</html>
