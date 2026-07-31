@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Information – NIMAS</title>
+    <style type="text/css">
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #ffffff; color: #6b6b6b; line-height: 1.7; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+        .page-title { background: linear-gradient(rgba(14, 30, 63, 0.9), rgba(14, 30, 63, 0.9)), url('https://sitewinimas.nikk-in.workers.dev/images/nimas-campus.jpg') center/cover; padding: 120px 0 50px; text-align: center; color: #fff; }
+        .page-title h1 { font-size: 40px; }
+        .content { padding: 60px 0; max-width: 900px; margin: 0 auto; }
+        .pre-footer-banner { width: 100%; text-align: center; background-color: #ffffff; padding-bottom: 40px; }
+        .pre-footer-banner img { max-width: 100%; height: auto; display: block; margin: 0 auto; }
+    </style>
+</head>
+<body>
+    <div id="header-container"></div>
+    <main>
+        <section class="page-title"><div class="container"><h1>NIMAS Portal</h1></div></section>
+        <section class="content container">
+            <h2>Information Page</h2>
+            <br>
+            <p>Welcome to the official information page. Browse our courses, application process, and campus highlights.</p>
+        </section>
+        <section class="pre-footer-banner"><div class="container"><img src="images/students-1-800x278.png" alt="Students Banner"></div></section>
+    </main>
+    <div id="footer-container"></div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch("header.html").then(r => r.text()).then(d => { document.getElementById("header-container").innerHTML = d; });
+            fetch("footer.html").then(r => r.text()).then(d => { document.getElementById("footer-container").innerHTML = d; });
+        });
+    </script>
+</body>
+</html>
