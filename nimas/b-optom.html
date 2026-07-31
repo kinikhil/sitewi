@@ -205,9 +205,8 @@
 
 <body>
 
-    <!-- Include External Header -->
-    <!--#include virtual="header.html" -->
-    <!-- Alternatively using PHP: <?php include 'header.html'; ?> -->
+    <!-- Header Placeholder Container -->
+    <div id="header-placeholder"></div>
 
     <section class="page-banner">
         <h1>B. Optometry</h1>
@@ -283,11 +282,11 @@
 
     </main>
 
-    <!-- Include External Footer -->
-    <!--#include virtual="footer.html" -->
-    <!-- Alternatively using PHP: <?php include 'footer.html'; ?> -->
+    <!-- Footer Placeholder Container -->
+    <div id="footer-placeholder"></div>
 
     <script type="text/javascript">
+        // Tab switching function
         function openTab(evt, tabName) {
             var i, tabpanel, tablinks;
 
@@ -304,6 +303,29 @@
             document.getElementById(tabName).classList.add("active");
             evt.currentTarget.classList.add("active");
         }
+
+        // Dynamically include external HTML files
+        function loadComponent(elementId, fileUrl) {
+            fetch(fileUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Failed to load ${fileUrl}: ${response.statusText}`);
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById(elementId).innerHTML = data;
+                })
+                .catch(error => {
+                    console.error('Error loading component:', error);
+                });
+        }
+
+        // Load header and footer on page initialization
+        document.addEventListener('DOMContentLoaded', function() {
+            loadComponent('header-placeholder', 'header.html');
+            loadComponent('footer-placeholder', 'footer.html');
+        });
     </script>
 
 </body>
