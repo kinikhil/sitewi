@@ -4,33 +4,225 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Values – NIMAS</title>
+
     <style type="text/css">
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #ffffff; color: #6b6b6b; line-height: 1.7; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
-        .page-title { background: linear-gradient(rgba(14, 30, 63, 0.9), rgba(14, 30, 63, 0.9)), url('https://sitewinimas.nikk-in.workers.dev/images/nimas-campus.jpg') center/cover; padding: 120px 0 50px; text-align: center; color: #fff; }
-        .page-title h1 { font-size: 40px; }
-        .content { padding: 60px 0; max-width: 900px; margin: 0 auto; }
-        .pre-footer-banner { width: 100%; text-align: center; background-color: #ffffff; padding-bottom: 40px; }
-        .pre-footer-banner img { max-width: 100%; height: auto; display: block; margin: 0 auto; }
+        /* --- RESET & GLOBAL STYLES --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #ffffff;
+            color: #6b6b6b;
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* --- HERO HEADER SECTION --- */
+        .kingster-page-title-wrap {
+            position: relative;
+            background: linear-gradient(rgba(14, 30, 63, 0.9), rgba(14, 30, 63, 0.9)), 
+                        url('https://sitewinimas.nikk-in.workers.dev/images/nimas-campus.jpg') no-repeat center center / cover;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        .kingster-page-title-content {
+            padding-top: 160px;
+            padding-bottom: 60px;
+        }
+
+        .kingster-page-title {
+            font-size: 48px;
+            font-weight: 700;
+            color: #ffffff;
+            text-transform: none;
+            margin: 0;
+            letter-spacing: -0.5px;
+        }
+
+        /* --- MAIN CONTENT SECTION --- */
+        .content-section {
+            background-color: #ffffff;
+            padding: 60px 0 80px 0;
+        }
+
+        .gdlr-core-text-box-item-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: left;
+            color: #6b6b6b;
+        }
+
+        .gdlr-core-text-box-item-content p {
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 22px;
+        }
+
+        .gdlr-core-text-box-item-content p strong {
+            color: #222222;
+        }
+
+        .gdlr-core-text-box-item-content h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #222222;
+            margin-top: 35px;
+            margin-bottom: 12px;
+        }
+
+        .gdlr-core-text-box-item-content h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #333333;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        /* BULLET LIST STYLES */
+        .gdlr-core-text-box-item-content ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin-bottom: 25px;
+        }
+
+        .gdlr-core-text-box-item-content ul li {
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 10px;
+            color: #6b6b6b;
+        }
+
+        /* --- PRE-FOOTER BANNER IMAGE --- */
+        .pre-footer-banner {
+            width: 100%;
+            text-align: center;
+            background-color: #ffffff;
+            padding-bottom: 40px;
+        }
+
+        .pre-footer-banner img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            .kingster-page-title-content {
+                padding-top: 100px;
+                padding-bottom: 40px;
+            }
+
+            .kingster-page-title {
+                font-size: 32px;
+            }
+
+            .content-section {
+                padding: 40px 0;
+            }
+        }
     </style>
 </head>
 <body>
+
+    <!-- REUSABLE HEADER PLACEHOLDER -->
     <div id="header-container"></div>
+
     <main>
-        <section class="page-title"><div class="container"><h1>Our Values</h1></div></section>
-        <section class="content container">
-            <h2>Core Principles & Ethics</h2>
-            <br>
-            <p>Integrity, innovation, inclusiveness, and excellence are the pillars that define our educational methodology and institutional culture.</p>
+        <!-- PAGE HERO HEADER -->
+        <section class="kingster-page-title-wrap">
+            <div class="container">
+                <div class="kingster-page-title-content">
+                    <h1 class="kingster-page-title">Our Values</h1>
+                </div>
+            </div>
         </section>
-        <section class="pre-footer-banner"><div class="container"><img src="images/students-1-800x278.png" alt="Students Banner"></div></section>
+
+        <!-- PAGE CONTENT -->
+        <section class="content-section">
+            <div class="container">
+                <div class="gdlr-core-text-box-item-content">
+                    
+                    <p><strong>Our vision is to be one of the most influential institutes in West Bengal and India.</strong></p>
+
+                    <p>We believe in a remarkable future, in doing our best and supporting others to do theirs.</p>
+
+                    <p>We know professional and industrial environments constantly vary and that institutes needed to equip their students with the skills to adapt and lead positive change for the future.</p>
+
+                    <p>Our mission is to engage in outstanding education that makes a major contribution to the future of the country. Students will be provided with an excellent education and the capacity to develop and apply knowledge to exercise influence and make meaningful life-long contributions to their communities.</p>
+
+                    <h3>Values and Commitments:</h3>
+
+                    <h4>In pursuit of our vision and mission, the institute is committed to:</h4>
+
+                    <ul>
+                        <li>Engaging students as partners in their education</li>
+                        <li>Develop leadership, teamwork and entrepreneurship</li>
+                        <li>To foster a global perspective</li>
+                        <li>Recognizing and valuing diversity</li>
+                        <li>To act with integrity</li>
+                        <li>To engage with industry and educational partners</li>
+                    </ul>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- PRE-FOOTER BANNER IMAGE -->
+        <section class="pre-footer-banner">
+            <div class="container">
+                <img src="images/students-1-800x278.png" alt="NIMAS Students Banner">
+            </div>
+        </section>
     </main>
+
+    <!-- REUSABLE FOOTER PLACEHOLDER -->
     <div id="footer-container"></div>
-    <script>
+
+    <!-- JS SCRIPTS FOR REUSABLE COMPONENTS -->
+    <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", function() {
-            fetch("header.html").then(r => r.text()).then(d => { document.getElementById("header-container").innerHTML = d; });
-            fetch("footer.html").then(r => r.text()).then(d => { document.getElementById("footer-container").innerHTML = d; });
+            
+            // 1. LOAD HEADER
+            fetch("header.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("header-container").innerHTML = data;
+
+                    // Re-bind mobile navigation toggle script
+                    const mobileToggle = document.getElementById('mobileToggle');
+                    const mainNav = document.getElementById('mainNav');
+                    if (mobileToggle && mainNav) {
+                        mobileToggle.addEventListener('click', function() {
+                            mainNav.classList.toggle('active');
+                        });
+                    }
+                })
+                .catch(err => console.error("Error loading header:", err));
+
+            // 2. LOAD FOOTER
+            fetch("footer.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("footer-container").innerHTML = data;
+                })
+                .catch(err => console.error("Error loading footer:", err));
         });
     </script>
 </body>
