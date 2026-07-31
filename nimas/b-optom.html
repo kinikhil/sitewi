@@ -15,7 +15,7 @@
             --border-color: #e0e0e0;
             --white: #ffffff;
 
-            /* Tab Specific Colors from Image */
+            /* Tab Specific Colors matched to image */
             --tab-inactive-bg: linear-gradient(180deg, #4c4c4c 0%, #1e1e1e 50%, #000000 100%);
             --tab-active-bg: linear-gradient(180deg, #4d6494 0%, #223c72 40%, #182b52 100%);
             --panel-bg: #182b52;
@@ -38,46 +38,6 @@
         a {
             color: inherit;
             text-decoration: none;
-        }
-
-        /* Header Styling */
-        header {
-            background-color: var(--white);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-        }
-
-        .logo img {
-            max-height: 50px;
-            width: auto;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 20px;
-        }
-
-        nav a {
-            font-weight: 600;
-            font-size: 14px;
-            color: var(--primary-color);
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: var(--accent-color);
         }
 
         /* Banner Styling */
@@ -117,7 +77,7 @@
             margin-bottom: 15px;
         }
 
-        /* Horizontal Tabs Styling (Matched to Image) */
+        /* Horizontal Tabs Styling */
         .tabs-container {
             border-radius: 4px;
             overflow: hidden;
@@ -173,7 +133,7 @@
             display: block;
         }
 
-        /* Red Accent Line Below Tabs */
+        /* Red Accent Line Below Active Tab Content */
         .tab-panel::before {
             content: "";
             display: block;
@@ -224,65 +184,8 @@
             background-color: var(--accent-color);
         }
 
-        /* Footer Styling */
-        footer {
-            background-color: var(--secondary-color);
-            color: var(--white);
-            padding-top: 50px;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 30px;
-            padding: 0 20px 40px;
-        }
-
-        .footer-column h3 {
-            font-size: 18px;
-            margin-bottom: 20px;
-            border-bottom: 2px solid var(--accent-color);
-            display: inline-block;
-            padding-bottom: 5px;
-        }
-
-        .footer-column p, .footer-column li {
-            font-size: 14px;
-            color: #cccccc;
-            margin-bottom: 10px;
-        }
-
-        .footer-column ul {
-            list-style: none;
-        }
-
-        .footer-column a:hover {
-            color: var(--white);
-        }
-
-        .copyright {
-            background-color: #111111;
-            text-align: center;
-            padding: 15px 20px;
-            font-size: 13px;
-            color: #888888;
-        }
-
         /* Responsive Breakpoints */
         @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 10px;
-            }
-
             .page-banner h1 {
                 font-size: 28px;
             }
@@ -302,24 +205,9 @@
 
 <body>
 
-    <header>
-        <div class="header-container">
-            <div class="logo">
-                <a href="#"><img src="./B. Optometry – NIMAS_files/Logo-11-800x274.png" alt="NIMAS Logo"></a>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Courses</a></li>
-                    <li><a href="#">Admissions</a></li>
-                    <li><a href="#">Placement &amp; Training</a></li>
-                    <li><a href="#">Academic</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <!-- Include External Header -->
+    <!--#include virtual="header.html" -->
+    <!-- Alternatively using PHP: <?php include 'header.html'; ?> -->
 
     <section class="page-banner">
         <h1>B. Optometry</h1>
@@ -333,17 +221,19 @@
             <p>Optometry is a health care profession which deals with the examination, diagnosis, treatment and management of diseases and disorders of the visual system. It is a vision care science. One can also define it as the science of eye equipment (including lenses and spectacles) which is imbued with the idea of improving the vision of the human eye and remove all kinds of obstacles of sight which an individual may experience. This is a dynamic and challenging career, which allows one to help people, achieve personal growth, community respect, job flexibility and financial success and offers virtually unlimited opportunities.</p>
         </div>
 
-        <!-- Custom Styled Tabs Section -->
+        <!-- Horizontal Tabs Section -->
         <div class="tabs-container">
             <div class="tabs-header">
-                <button class="tab-btn" onclick="openTab(event, 'tab-overview')">Program Overview</button>
+                <!-- First Tab Active By Default -->
+                <button class="tab-btn active" onclick="openTab(event, 'tab-overview')">Program Overview</button>
                 <button class="tab-btn" onclick="openTab(event, 'tab-eligibility')">Eligibility Criteria</button>
                 <button class="tab-btn" onclick="openTab(event, 'tab-curriculum')">Curriculum</button>
-                <button class="tab-btn active" onclick="openTab(event, 'tab-duration')">Duration</button>
+                <button class="tab-btn" onclick="openTab(event, 'tab-duration')">Duration</button>
             </div>
 
             <div class="tab-content-wrapper">
-                <div id="tab-overview" class="tab-panel">
+                <!-- First Panel Active By Default -->
+                <div id="tab-overview" class="tab-panel active">
                     <h3>Program Overview</h3>
                     <p>B. Optometry programme at NIMAS is unique in its objective to:</p>
                     <ul>
@@ -381,7 +271,7 @@
                     </ul>
                 </div>
 
-                <div id="tab-duration" class="tab-panel active">
+                <div id="tab-duration" class="tab-panel">
                     <p>4 Years- Full Time</p>
                 </div>
             </div>
@@ -393,47 +283,9 @@
 
     </main>
 
-    <footer>
-        <div class="footer-container">
-            <div class="footer-column">
-                <h3>Campus Address</h3>
-                <p>Ward No. 4, Lokenath Mandir<br>HL NO- 1045/1/A, Behind<br>Barasat – Barrackpore Rd<br>Kolkata, 700125</p>
-                <p><strong>Phone:</strong> <a href="tel:+919874641007">+91-9874641007</a></p>
-                <p><strong>Email:</strong> <a href="mailto:contact@nimas.in">contact@nimas.in</a></p>
-            </div>
-
-            <div class="footer-column">
-                <h3>Opening Hours</h3>
-                <p><strong>Monday-Friday:</strong> 10:30 AM to 5:30 PM</p>
-                <p><strong>Saturday:</strong> 10:30 AM to 5:30 PM</p>
-                <p><strong>Sunday:</strong> Closed</p>
-            </div>
-
-            <div class="footer-column">
-                <h3>Featured Links</h3>
-                <ul>
-                    <li><a href="#">Know NIMAS</a></li>
-                    <li><a href="#">Why NIMAS</a></li>
-                    <li><a href="#">Infrastructure</a></li>
-                    <li><a href="#">Courses</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-column">
-                <h3>Academics</h3>
-                <ul>
-                    <li><a href="#">Eligibility Criteria</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Scholarships</a></li>
-                    <li><a href="#">How to Apply</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="copyright">
-            Copyright All Right Reserved 2020, NIMAS
-        </div>
-    </footer>
+    <!-- Include External Footer -->
+    <!--#include virtual="footer.html" -->
+    <!-- Alternatively using PHP: <?php include 'footer.html'; ?> -->
 
     <script type="text/javascript">
         function openTab(evt, tabName) {
