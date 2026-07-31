@@ -1,1 +1,217 @@
+<!-- HEADER COMPONENT -->
+<style type="text/css">
+    /* --- HEADER & NAVIGATION STYLES --- */
+    .site-header {
+        background-color: #ffffff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        position: relative;
+        z-index: 99999;
+    }
 
+    .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 0;
+    }
+
+    .logo img {
+        max-height: 60px;
+        width: auto;
+        display: block;
+    }
+
+    .main-nav {
+        position: relative;
+    }
+
+    .nav-menu {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+        gap: 6px;
+    }
+
+    .nav-menu > li {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    .nav-menu > li > a {
+        display: inline-block;
+        padding: 10px 18px;
+        font-size: 18px;
+        font-weight: 500;
+        color: #0f2b5c;
+        transition: color 0.2s ease;
+        line-height: 1.2;
+        letter-spacing: -0.2px;
+        text-decoration: none;
+    }
+
+    .nav-menu > li.active > a,
+    .nav-menu > li > a:hover {
+        color: #d8232a;
+    }
+
+    /* Dropdown Sub-menus */
+    .nav-menu ul.sub-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        min-width: 250px;
+        background-color: #ffffff;
+        box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.12);
+        border-radius: 4px;
+        padding: 12px 0;
+        list-style: none;
+        z-index: 999999;
+    }
+
+    .nav-menu ul.sub-menu li a {
+        display: block;
+        padding: 12px 22px;
+        font-size: 16px;
+        font-weight: 400;
+        color: #444444;
+        text-decoration: none;
+        transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .nav-menu ul.sub-menu li a:hover {
+        background-color: #f4f6f9;
+        color: #0f2b5c;
+    }
+
+    .nav-menu li:hover > ul.sub-menu {
+        display: block !important;
+    }
+
+    .mobile-toggle {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 28px;
+        cursor: pointer;
+        color: #0f2b5c;
+    }
+
+    @media (max-width: 992px) {
+        .mobile-toggle {
+            display: block;
+        }
+
+        .main-nav {
+            display: none;
+            width: 100%;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #ffffff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .main-nav.active {
+            display: block;
+        }
+
+        .nav-menu {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0;
+        }
+
+        .nav-menu > li {
+            width: 100%;
+        }
+    }
+</style>
+
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+            <div class="logo">
+                <a href="http://nimas.in/">
+                    <img src="https://i.postimg.cc/FsX6vKn5/nimaslogo.png" alt="NIMAS Logo">
+                </a>
+            </div>
+
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation">&#9776;</button>
+
+            <nav class="main-nav" id="mainNav">
+                <ul class="nav-menu">
+                    <li class="active"><a href="http://nimas.in/">Home</a></li>
+                    <li>
+                        <a href="#">About Us</a>
+                        <ul class="sub-menu">
+                            <li><a href="http://nimas.in/know-nimas/">Know NIMAS</a></li>
+                            <li><a href="http://nimas.in/office-of-the-chairman/">Office of the Chairman</a></li>
+                            <li><a href="http://nimas.in/office-of-the-principal/">Office of the Principal</a></li>
+                            <li><a href="http://nimas.in/why-nimas/">Why NIMAS</a></li>
+                            <li><a href="http://nimas.in/our-values/">Our Values</a></li>
+                            <li><a href="http://nimas.in/ranking-awards/">Ranking &amp; Awards</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Courses</a>
+                        <ul class="sub-menu">
+                            <li><a href="http://nimas.in/b-optom/">B. Optometry</a></li>
+                            <li><a href="http://nimas.in/b-sc-in-cyber-security/">B.Sc. in Cyber Security</a></li>
+                            <li><a href="http://nimas.in/bsc-computer-science/">B.Sc. in Computer Science</a></li>
+                            <li><a href="http://nimas.in/b-sc-in-data-science/">B.Sc. in Data Science</a></li>
+                            <li><a href="http://nimas.in/m-sc-in-clinical-psychology/">M.Sc. in Clinical Psychology</a></li>
+                            <li><a href="http://nimas.in/m-sc-dietetics-nutration/">M.Sc. in Dietetics &amp; Nutrition</a></li>
+                            <li><a href="http://nimas.in/hospitality-administration-institute-in-kolkata/">Hotel Management (BHHA)</a></li>
+                            <li><a href="http://nimas.in/bba-hospital-management/">Bachelor in Hospital Management</a></li>
+                            <li><a href="http://nimas.in/top-bca-institute-in-kolkata/">BCA</a></li>
+                            <li><a href="http://nimas.in/b-sc-in-medical-lab-technology/">B.Sc. in Medical Lab Technology</a></li>
+                            <li><a href="http://nimas.in/bsc-in-medical-instrumentation-and-critical-care-technology/">B.Sc. in Critical Care Tech</a></li>
+                            <li><a href="http://nimas.in/bba/">BBA</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Admissions</a>
+                        <ul class="sub-menu">
+                            <li><a href="http://nimas.in/how-to-apply/">How to Apply</a></li>
+                            <li><a href="http://nimas.in/eligibility/">Eligibility</a></li>
+                            <li><a href="http://nimas.in/scholarships/">Scholarships</a></li>
+                            <li><a href="http://nimas.in/faq/">FAQ</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Placement &amp; Training</a>
+                        <ul class="sub-menu">
+                            <li><a href="http://nimas.in/our-placements/">Our Placements</a></li>
+                            <li><a href="http://nimas.in/placement-support-desk/">Placement Support Desk</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Academic</a>
+                        <ul class="sub-menu">
+                            <li><a href="http://nimas.in/courses/">Courses</a></li>
+                            <li><a href="http://nimas.in/infrastructure/">Infrastructure</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="http://nimas.in/contact/">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<script>
+    // Initialize mobile menu toggle once loaded
+    (function() {
+        const mobileToggle = document.getElementById('mobileToggle');
+        const mainNav = document.getElementById('mainNav');
+        if (mobileToggle && mainNav) {
+            mobileToggle.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+            });
+        }
+    })();
+</script>
