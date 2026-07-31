@@ -4,33 +4,312 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Why NIMAS – NIMAS</title>
+
     <style type="text/css">
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #ffffff; color: #6b6b6b; line-height: 1.7; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
-        .page-title { background: linear-gradient(rgba(14, 30, 63, 0.9), rgba(14, 30, 63, 0.9)), url('https://sitewinimas.nikk-in.workers.dev/images/nimas-campus.jpg') center/cover; padding: 120px 0 50px; text-align: center; color: #fff; }
-        .page-title h1 { font-size: 40px; }
-        .content { padding: 60px 0; max-width: 900px; margin: 0 auto; }
-        .pre-footer-banner { width: 100%; text-align: center; background-color: #ffffff; padding-bottom: 40px; }
-        .pre-footer-banner img { max-width: 100%; height: auto; display: block; margin: 0 auto; }
+        /* --- RESET & GLOBAL STYLES --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #ffffff;
+            color: #6b6b6b;
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* --- HERO HEADER SECTION --- */
+        .kingster-page-title-wrap {
+            position: relative;
+            background: linear-gradient(rgba(14, 30, 63, 0.9), rgba(14, 30, 63, 0.9)), 
+                        url('https://sitewinimas.nikk-in.workers.dev/images/nimas-campus.jpg') no-repeat center center / cover;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        .kingster-page-title-content {
+            padding-top: 160px;
+            padding-bottom: 60px;
+        }
+
+        .kingster-page-title {
+            font-size: 48px;
+            font-weight: 700;
+            color: #ffffff;
+            text-transform: none;
+            margin: 0;
+            letter-spacing: -0.5px;
+        }
+
+        /* --- MAIN CONTENT SECTION --- */
+        .content-section {
+            background-color: #ffffff;
+            padding: 60px 0 80px 0;
+        }
+
+        .gdlr-core-text-box-item-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: left;
+            color: #6b6b6b;
+        }
+
+        .gdlr-core-text-box-item-content p {
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 22px;
+        }
+
+        .gdlr-core-text-box-item-content h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #222222;
+            margin-top: 35px;
+            margin-bottom: 12px;
+        }
+
+        .gdlr-core-text-box-item-content h4 {
+            font-size: 15px;
+            font-weight: 700;
+            color: #333333;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 20px;
+            margin-bottom: 15px;
+        }
+
+        /* BULLET LIST STYLES */
+        .gdlr-core-text-box-item-content ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin-bottom: 25px;
+        }
+
+        .gdlr-core-text-box-item-content ul li {
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 10px;
+            color: #6b6b6b;
+        }
+
+        /* AWARDS IMAGE STYLING */
+        .awards-placeholder-wrap {
+            text-align: center;
+            margin: 30px 0 40px 0;
+        }
+
+        .awards-placeholder-wrap img {
+            max-width: 100%;
+            height: auto;
+            display: inline-block;
+        }
+
+        /* --- APPLY NOW BUTTON --- */
+        .gdlr-core-button-item {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .gdlr-core-button {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 700;
+            padding: 15px 50px;
+            border-radius: 2px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .gdlr-core-button:hover {
+            background-color: #45a049;
+            transform: translateY(-1px);
+        }
+
+        /* --- PRE-FOOTER BANNER IMAGE --- */
+        .pre-footer-banner {
+            width: 100%;
+            text-align: center;
+            background-color: #ffffff;
+            padding-bottom: 40px;
+        }
+
+        .pre-footer-banner img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            .kingster-page-title-content {
+                padding-top: 100px;
+                padding-bottom: 40px;
+            }
+
+            .kingster-page-title {
+                font-size: 32px;
+            }
+
+            .content-section {
+                padding: 40px 0;
+            }
+        }
     </style>
 </head>
 <body>
+
+    <!-- REUSABLE HEADER PLACEHOLDER -->
     <div id="header-container"></div>
+
     <main>
-        <section class="page-title"><div class="container"><h1>Why NIMAS</h1></div></section>
-        <section class="content container">
-            <h2>Why Choose NIMAS?</h2>
-            <br>
-            <p>NIMAS offers state-of-the-art infrastructure, experienced faculty, and unmatched placement opportunities with leading national and international recruiters.</p>
+        <!-- PAGE HERO HEADER -->
+        <section class="kingster-page-title-wrap">
+            <div class="container">
+                <div class="kingster-page-title-content">
+                    <h1 class="kingster-page-title">Why NIMAS</h1>
+                </div>
+            </div>
         </section>
-        <section class="pre-footer-banner"><div class="container"><img src="images/students-1-800x278.png" alt="Students Banner"></div></section>
+
+        <!-- PAGE CONTENT -->
+        <section class="content-section">
+            <div class="container">
+                <div class="gdlr-core-text-box-item-content">
+                    
+                    <!-- WHY NIMAS HIGHLIGHTS -->
+                    <ul>
+                        <li>All courses at NIMAS are regular, full-time programs affiliated with MAKAUT (formerly WBUT) and approved by UGC, MHRD, Government of India.</li>
+                        <li>Experienced and dynamic faculty members who bring subject-matter expertise, industry experience, and innovative teaching methods.</li>
+                        <li>An enriching student life that fosters lifelong connections, personal growth, and enhanced career readiness.</li>
+                        <li>Regularly updated curricula designed to keep pace with evolving industry demands and emerging trends.</li>
+                        <li>Comprehensive study modules offering balanced theoretical foundations and practical skills.</li>
+                        <li>Dedicated focus on individual potential and skill enhancement to boost confidence and employability.</li>
+                        <li>Regular guest lectures and interactive sessions with leading corporate professionals and industry experts.</li>
+                        <li>Personalized attention and individual guidance for every student throughout their academic journey.</li>
+                        <li>Modern, state-of-the-art laboratories integrated with modern learning technologies.</li>
+                        <li>A well-stocked campus library offering extensive academic and research resources.</li>
+                        <li>An active corporate relations and placement cell facilitating industry engagement and career opportunities.</li>
+                    </ul>
+
+                    <!-- ACCREDITATION & AFFILIATIONS -->
+                    <h3>Accreditation, Affiliations & Awards</h3>
+                    <h4>Best Institute for Paramedical, Information Technology, Hotel Management and Management Studies in West Bengal</h4>
+
+                    <ul>
+                        <li>B. Optometry</li>
+                        <li>B.Sc. in Cyber Security</li>
+                        <li>B.Sc. in Computer Science</li>
+                        <li>B.Sc. in Data Science</li>
+                        <li>M.Sc. in Clinical Psychology</li>
+                        <li>M.Sc. in Dietetics & Nutrition</li>
+                        <li>Hotel Management (BHHA)</li>
+                        <li>Bachelor in Hospital Management</li>
+                        <li>BCA</li>
+                        <li>B.Sc. in Medical Lab Technology</li>
+                        <li>B.Sc. in Medical Instrumentation and Critical Care Technology</li>
+                        <li>BBA</li>
+                    </ul>
+
+                    <p>The University officially commenced operations on January 15, 2001, following the enactment of the West Bengal University of Technology Act, 2000 (West Bengal Act XV of 2000). Academic programs were formally launched on July 16, 2001, under notification from the Department of Higher Education, Government of West Bengal. The institution is recognized under Section 2(f) and Section 12(B) of the UGC Act and is eligible to receive UGC grants. For more details on the university, visit <a href="http://www.wbut.ac.in" target="_blank" style="color: #0e1e3f; text-decoration: underline;">www.wbut.ac.in</a>.</p>
+
+                    <p>NIMAS offers a proven path toward international career opportunities. Established in 1999, the institute has earned consistent acclaim from recognized educational rating organizations for its commitment to academic quality, innovation, and practical execution.</p>
+
+                    <!-- AWARDS & RECOGNITION LIST -->
+                    <ul>
+                        <li>Best Institute For Paramedical, Information Technology, Hotel Management And Management Studies In West Bengal</li>
+                        <li>“Best Institution Offering UG/PG Programs with Outstanding Placement Records in Kolkata, West Bengal” – Pride of Indian Education Awards, BrandImpact 2020.</li>
+                        <li>“Best Training, Infrastructure and Placement Institute in Eastern India” by India's Most Prominent Education Awards</li>
+                        <li>“Best Hotel Management Institute in West Bengal” by India’s Most Prominent Education Awards, 2017 in association with News 18 India (IBN7) as media partner</li>
+                        <li>“Best Hospitality & Hotel Management Training Institute in West Bengal” by International Education Excellence Awards, 2017</li>
+                        <li>“Best Training, Infrastructure and Placement Institute in Kolkata” by Prime Time Global Education Excellence Awards, 2017</li>
+                        <li>“Top Hotel Management Institute of India” by CSRAward for Excellence, 2016</li>
+                        <li>“Best Hospitality and Hotel Management Training Institute in Kolkata” by Prime Time Global Education Excellence Awards, 2016</li>
+                    </ul>
+
+                    <!-- ALL AWARDS IMAGE PLACEHOLDER -->
+                    <div class="awards-placeholder-wrap">
+                        <img src="allawards.jpeg" alt="NIMAS Awards and Recognition Accolades">
+                    </div>
+
+                    <!-- INFRASTRUCTURE -->
+                    <h3>State of the Art Infrastructure</h3>
+                    <p>Located on the tranquil outskirts of Kolkata away from urban noise, our spacious campus features comprehensive student housing, athletic facilities, recreational areas, and dedicated academic venues. Designed to seamlessly link classroom learning with practical industry environments, the campus includes specialized training setups such as a 5-star standard lobby mockup, functional training restaurants, and beverage service suites.</p>
+
+                    <!-- PLACEMENT AND INTERNSHIPS -->
+                    <h3>Placement and Internships</h3>
+                    <p>Our long-established presence in higher education has fostered strong relationships with leading corporate organizations and hotel chains, facilitating regular campus drives for both internship placements and full-time employment roles.</p>
+                    <p>Numerous premier hospitality organizations consistently recruit our students across consecutive academic terms for key operational and management internship assignments.</p>
+
+                    <!-- FACULTY -->
+                    <h3>Eminent Faculty and Mentors</h3>
+                    <p>As an equal opportunity employer, NIMAS attracts exceptional teaching talent from across the country. Our faculty members combine robust academic qualifications with extensive industry experience, continuously updating their credentials to meet regulatory and sector standards to guide every student toward excellence.</p>
+
+                    <!-- APPLY NOW BUTTON -->
+                    <div class="gdlr-core-button-item">
+                        <a href="how-to-apply.html" class="gdlr-core-button"><span class="gdlr-core-content">APPLY NOW</span></a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- PRE-FOOTER BANNER IMAGE -->
+        <section class="pre-footer-banner">
+            <div class="container">
+                <img src="images/students-1-800x278.png" alt="NIMAS Students Banner">
+            </div>
+        </section>
     </main>
+
+    <!-- REUSABLE FOOTER PLACEHOLDER -->
     <div id="footer-container"></div>
-    <script>
+
+    <!-- JS SCRIPTS FOR REUSABLE COMPONENTS -->
+    <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", function() {
-            fetch("header.html").then(r => r.text()).then(d => { document.getElementById("header-container").innerHTML = d; });
-            fetch("footer.html").then(r => r.text()).then(d => { document.getElementById("footer-container").innerHTML = d; });
+            
+            // 1. LOAD HEADER
+            fetch("header.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("header-container").innerHTML = data;
+
+                    // Re-bind mobile navigation toggle script
+                    const mobileToggle = document.getElementById('mobileToggle');
+                    const mainNav = document.getElementById('mainNav');
+                    if (mobileToggle && mainNav) {
+                        mobileToggle.addEventListener('click', function() {
+                            mainNav.classList.toggle('active');
+                        });
+                    }
+                })
+                .catch(err => console.error("Error loading header:", err));
+
+            // 2. LOAD FOOTER
+            fetch("footer.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("footer-container").innerHTML = data;
+                })
+                .catch(err => console.error("Error loading footer:", err));
         });
     </script>
 </body>
