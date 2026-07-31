@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NIMAS – Affiliated to MAKAUT</title>
+    <title>Know NIMAS – NIMAS</title>
 
     <style type="text/css">
         /* --- RESET & GLOBAL STYLES --- */
@@ -15,9 +15,9 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #f8f9fa;
-            color: #333333;
-            line-height: 1.6;
+            background-color: #ffffff;
+            color: #6b6b6b;
+            line-height: 1.7;
         }
 
         a {
@@ -31,458 +31,110 @@
             padding: 0 15px;
         }
 
-        /* --- CUSTOM SLIDER STYLES --- */
-        .slider-section {
+        /* --- HERO HEADER SECTION --- */
+        .kingster-page-title-wrap {
             position: relative;
-            width: 100%;
-            margin: 0 auto 20px auto;
-        }
-
-        .custom-slider-container {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            background-color: #e9ecef;
-        }
-
-        .custom-slider-track {
-            display: flex;
-            transition: transform 0.4s ease-in-out;
-            width: 100%;
-        }
-
-        .custom-slide {
-            min-width: 100%;
-            user-select: none;
-        }
-
-        .custom-slide img {
-            width: 100%;
-            height: auto;
-            display: block;
-            object-fit: cover;
-        }
-
-        .custom-nav-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.4);
+            background: linear-gradient(rgba(14, 30, 63, 0.9), rgba(14, 30, 63, 0.9)), 
+                        url('https://sitewinimas.nikk-in.workers.dev/images/nimas-campus.jpg') no-repeat center center / cover;
+            text-align: center;
             color: #ffffff;
-            border: none;
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 22px;
-            z-index: 10;
-            transition: background 0.3s ease;
         }
 
-        .custom-nav-btn:hover {
-            background: rgba(0, 0, 0, 0.8);
+        .kingster-page-title-content {
+            padding-top: 160px;
+            padding-bottom: 60px;
         }
 
-        .custom-prev-btn { left: 15px; }
-        .custom-next-btn { right: 15px; }
-
-        /* --- APPLICATION SECTION --- */
-        .apply-section {
-            padding: 50px 0;
-            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), 
-                        url('https://i.postimg.cc/Prfbb19N/nimas-building-blue.jpg') no-repeat center center / cover;
-            position: relative;
-        }
-
-        .apply-grid {
-            display: flex;
-            align-items: stretch;
-            gap: 40px;
-        }
-
-        .apply-image-col {
-            flex: 1;
-            display: flex;
-        }
-
-        .apply-image-col img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            display: block;
-        }
-
-        .apply-content-col {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            color: #ffffff;
-            padding: 10px 0;
-        }
-
-        .apply-content-col h2 {
-            font-size: 34px;
-            color: #ffffff;
-            margin-bottom: 10px;
+        .kingster-page-title {
+            font-size: 48px;
             font-weight: 700;
+            color: #ffffff;
+            text-transform: none;
+            margin: 0;
+            letter-spacing: -0.5px;
         }
 
-        .apply-content-col h4 {
-            font-size: 18px;
-            color: #4ade80;
-            margin-bottom: 15px;
-            font-weight: 600;
+        /* --- MAIN CONTENT SECTION --- */
+        .content-section {
+            background-color: #ffffff;
+            padding: 60px 0 60px 0;
         }
 
-        .apply-content-col p {
+        .gdlr-core-text-box-item-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: left;
+            color: #6b6b6b;
+            text-transform: none;
+        }
+
+        .gdlr-core-text-box-item-content p {
             font-size: 15px;
-            color: #e2e8f0;
-            line-height: 1.7;
-            margin-bottom: 30px;
+            line-height: 1.8;
+            margin-bottom: 22px;
         }
 
-        .apply-buttons {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
+        .gdlr-core-text-box-item-content p.italic-tagline {
+            font-style: italic;
+            font-weight: 700;
+            color: #444444;
+            margin-top: 30px;
+            margin-bottom: 40px;
         }
 
-        .btn-green {
-            background-color: #22c55e;
-            color: #ffffff;
-            padding: 14px 28px;
-            border-radius: 4px;
-            font-weight: 600;
-            transition: background-color 0.2s ease, transform 0.2s ease;
+        /* --- APPLY NOW BUTTON --- */
+        .gdlr-core-button-item {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .gdlr-core-button {
             display: inline-block;
-            box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
-        }
-
-        .btn-green:hover {
-            background-color: #16a34a;
-            transform: translateY(-2px);
-        }
-
-        /* --- NEWS & COURSES SPLIT SECTION --- */
-        .news-courses-section {
-            background-color: #ffffff;
-            padding: 50px 0;
-        }
-
-        .news-courses-grid {
-            display: flex;
-            gap: 40px;
-            align-items: flex-start;
-        }
-
-        .news-col {
-            flex: 1.1;
-            background-color: #ffffff;
-        }
-
-        .news-header-row {
-            display: flex;
-            align-items: center;
-            margin-bottom: 25px;
-            position: relative;
-        }
-
-        .news-header-row h2 {
-            font-size: 26px;
-            font-weight: 800;
-            color: #0f2b5c;
-            white-space: nowrap;
-            margin-right: 20px;
-        }
-
-        .news-header-row::after {
-            content: "";
-            flex-grow: 1;
-            height: 1px;
-            background-color: #e2e8f0;
-        }
-
-        .read-all-link {
-            display: block;
-            color: #22c55e;
-            font-size: 13px;
-            font-weight: 600;
-            margin-top: -15px;
-            margin-bottom: 30px;
-            transition: color 0.2s;
-        }
-
-        .read-all-link:hover {
-            color: #16a34a;
-        }
-
-        .news-cards-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .news-card .news-date {
-            font-size: 12px;
-            font-weight: 700;
-            color: #94a3b8;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 5px;
-        }
-
-        .news-card h3 {
-            font-size: 16px;
-            font-weight: 700;
-            color: #334155;
-            line-height: 1.4;
-        }
-
-        .news-video-container {
-            position: relative;
-            width: 100%;
-            border-radius: 4px;
-            overflow: hidden;
-            background-color: #000;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-        }
-
-        .news-video-container video {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .unmute-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background-color: rgba(15, 27, 92, 0.85);
+            background-color: #0e1e3f;
             color: #ffffff;
-            border: 2px solid #22c55e;
-            padding: 8px 16px;
             font-size: 14px;
             font-weight: 700;
-            border-radius: 20px;
-            cursor: pointer;
-            z-index: 20;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            padding: 15px 60px;
+            border-radius: 2px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
-        .unmute-btn:hover {
-            background-color: #22c55e;
-            color: #ffffff;
-            transform: scale(1.05);
+        .gdlr-core-button:hover {
+            background-color: #1a2f5a;
+            transform: translateY(-1px);
         }
 
-        .courses-sidebar-col {
-            flex: 0.9;
-            background: linear-gradient(rgba(15, 23, 42, 0.88), rgba(15, 23, 42, 0.88)), 
-                        url('https://i.postimg.cc/Prfbb19N/nimas-building-blue.jpg') no-repeat center center / cover;
-            padding: 35px 40px;
-            color: #ffffff;
-            border-radius: 6px;
-        }
-
-        .courses-sidebar-title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 24px;
-            font-weight: 800;
-            color: #ffffff;
-            margin-bottom: 25px;
-        }
-
-        .courses-sidebar-title svg {
-            width: 22px;
-            height: 22px;
-            fill: #ffffff;
-        }
-
-        .courses-sidebar-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .courses-sidebar-list li {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-        }
-
-        .courses-sidebar-list li a {
-            display: block;
-            padding: 10px 0;
-            color: #22c55e;
-            font-weight: 700;
-            font-size: 15px;
-            transition: color 0.2s ease, padding-left 0.2s ease;
-        }
-
-        .courses-sidebar-list li a:hover {
-            color: #4ade80;
-            padding-left: 5px;
-        }
-
-        /* --- AWARDS SECTION --- */
-        .awards-section {
-            background-color: #1a233a;
-            color: #ffffff;
-            padding: 60px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .awards-header {
-            margin-bottom: 25px;
-        }
-
-        .awards-icon {
-            width: 38px;
-            height: auto;
-            margin-bottom: 15px;
-            display: block;
-        }
-
-        .awards-section h2 {
-            font-size: 28px;
-            font-weight: 700;
-            color: #ffffff;
-            margin-bottom: 20px;
-        }
-
-        .awards-quote {
-            font-size: 16px;
-            line-height: 1.6;
-            color: #e2e8f0;
-            margin-bottom: 30px;
-            font-style: italic;
-        }
-
-        .awards-list {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 40px 0;
-        }
-
-        .awards-list li {
-            position: relative;
-            padding-left: 24px;
-            margin-bottom: 14px;
-            font-size: 15px;
-            color: #cbd5e1;
-            line-height: 1.5;
-        }
-
-        .awards-list li::before {
-            content: "•";
-            position: absolute;
-            left: 5px;
-            top: 0;
-            color: #ffffff;
-            font-size: 18px;
-        }
-
-        .awards-banner {
+        /* --- PRE-FOOTER IMAGE SECTION --- */
+        .pre-footer-banner {
             width: 100%;
             text-align: center;
-            margin-top: 20px;
-        }
-
-        .awards-banner img {
-            width: 100%;
-            max-width: 1100px;
-            height: auto;
-            display: block;
-            margin: 0 auto;
-            filter: drop-shadow(0px 4px 15px rgba(0, 0, 0, 0.4));
-        }
-
-        /* --- TESTIMONIALS SECTION --- */
-        .testimonials-section {
             background-color: #ffffff;
-            padding: 60px 0;
-            border-top: 1px solid #e2e8f0;
+            padding-bottom: 40px;
         }
 
-        .testimonials-banner {
-            width: 100%;
-            text-align: center;
-        }
-
-        .testimonials-banner img {
-            width: 100%;
-            max-width: 1150px;
+        .pre-footer-banner img {
+            max-width: 100%;
             height: auto;
             display: block;
             margin: 0 auto;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            border-radius: 6px;
         }
 
-        /* --- INFO GRID SECTION --- */
-        .info-grid-section {
-            background-color: #202842;
-            color: #ffffff;
-            padding: 60px 0;
-        }
-
-        .info-grid {
-            display: flex;
-            gap: 30px;
-            justify-content: space-between;
-        }
-
-        .info-col {
-            flex: 1;
-        }
-
-        .info-col h3 {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: #ffffff;
-        }
-
-        .info-col p {
-            font-size: 14.5px;
-            color: #cbd5e1;
-            line-height: 1.6;
-        }
-
-        .courses-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .courses-list li {
-            font-size: 14.5px;
-            color: #cbd5e1;
-            margin-bottom: 8px;
-            line-height: 1.4;
-        }
-
-        @media (max-width: 992px) {
-            .news-courses-grid,
-            .apply-grid,
-            .info-grid {
-                flex-direction: column;
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            .kingster-page-title-content {
+                padding-top: 100px;
+                padding-bottom: 40px;
             }
 
-            .apply-image-col img {
-                height: auto;
+            .kingster-page-title {
+                font-size: 32px;
+            }
+
+            .content-section {
+                padding: 40px 0;
             }
         }
     </style>
@@ -493,207 +145,48 @@
     <div id="header-container"></div>
 
     <main>
-        <!-- First Custom Image Slider Section -->
-        <section class="slider-section">
-            <div class="custom-slider-container">
-                <button class="custom-nav-btn custom-prev-btn" id="prevBtn" aria-label="Previous Slide">&#10094;</button>
-                <button class="custom-nav-btn custom-next-btn" id="nextBtn" aria-label="Next Slide">&#10095;</button>
-
-                <div class="custom-slider-track" id="sliderTrack">
-                    <div class="custom-slide">
-                        <img src="https://i.postimg.cc/zf5k4TM0/adminssion-slider1.png" alt="Admission Slider 1">
-                    </div>
-                    <div class="custom-slide">
-                        <img src="https://i.postimg.cc/fWryFZpD/slider2.png" alt="Admission Slider 2">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Second Custom Image Slider Section -->
-        <section class="slider-section">
-            <div class="custom-slider-container">
-                <button class="custom-nav-btn custom-prev-btn" id="prevBtn2" aria-label="Previous Slide">&#10094;</button>
-                <button class="custom-nav-btn custom-next-btn" id="nextBtn2" aria-label="Next Slide">&#10095;</button>
-
-                <div class="custom-slider-track" id="sliderTrack2">
-                    <div class="custom-slide">
-                        <img src="https://i.postimg.cc/dVBKbj3K/Nimas-Data-Science-REV.jpg" alt="Data Science">
-                    </div>
-                    <div class="custom-slide">
-                        <img src="https://i.postimg.cc/QxcDb3rn/Nimas-Cyber-REV.jpg" alt="Cyber Security">
-                    </div>
-                    <div class="custom-slide">
-                        <img src="https://i.postimg.cc/fknHLp2S/bba-adminssion.jpg" alt="BBA Admission">
-                    </div>
-                    <div class="custom-slide">
-                        <img src="https://i.postimg.cc/mkFXTBSn/Nimas-BBA-REV.jpg" alt="Nimas BBA">
-                    </div>
-                    <div class="custom-slide">
-                        <img src="https://i.postimg.cc/gjRCNv12/Nimas-Optometry-REV.jpg" alt="Nimas Optometry">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Apply for Admission Section -->
-        <section class="apply-section">
+        <!-- PAGE HERO HEADER -->
+        <section class="kingster-page-title-wrap">
             <div class="container">
-                <div class="apply-grid">
-                    <div class="apply-image-col">
-                        <img src="https://i.postimg.cc/B6M9jxR9/apply-now.png" alt="Apply Now">
-                    </div>
-                    <div class="apply-content-col">
-                        <h2>Apply for Admission</h2>
-                        <h4>Applications for 2026 Batch are now open !</h4>
-                        <p>
-                            Congratulations! You have chosen to join one of the best institute in Eastern India. As you start a new, exciting journey of your life, let us simplify it for you. Because nothing is as important as starting it right.
-                        </p>
-                        <div class="apply-buttons">
-                            <a href="#" class="btn-green">Apply Now</a>
-                            <a href="#" class="btn-green">Download the Application Form</a>
-                        </div>
+                <div class="kingster-page-title-content">
+                    <h1 class="kingster-page-title">Know NIMAS</h1>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE CONTENT -->
+        <section class="content-section">
+            <div class="container">
+                <div class="gdlr-core-text-box-item-content">
+                    <p>The young leaders who better our world, the life changing experiences that transform people and communities, and the innovative contributions that change the future forever.</p>
+
+                    <p>We know success often comes from being an exception to the norm—challenging convention, adapting and innovating, creating bold new trends and pioneering solutions ahead of their time. At NIMAS, thinking different is the norm.</p>
+
+                    <p>A highly ranked institute with a global outlook, we're deeply connected to our community and value our place in it.</p>
+
+                    <p>Our academic excellence, innovative teaching and learning practices, along with our strong ties to industry, make us one of the leading providers of higher education in India.</p>
+
+                    <p>NIMAS, ranked as the best hotel management institute in Kolkata is offering Undergraduate programs that is accredited by Maulana Abul Kalam Azad University of Technology, MAKAUT formerly known as WBUT.</p>
+
+                    <p>We expose our students to a broad range of courses covering the inter-related areas of the hospitality, management and information technology industry, by means of theoretical and practical work within the institute and by regular periods of internship in recognized hotels, restaurants, corporates or related institutions. Students' intellectual abilities are further developed through the general education component of the undergraduate programs.</p>
+
+                    <p>Our objective is to train and educate students to a level of all round competence, in the varied operations of the industry. Graduates of NIMAS, having developed competence in a range of technical, organizational and administrative skills, will be able to progress through the ranks of the management hierarchy.</p>
+
+                    <p>We develop students' abilities to initiate and manage change by confronting them with contemporary issues and challenges that the industry faces today. The global environment at the institute promotes awareness and understanding of national and cultural differences and encourages students to work together in a team to improve inter-personal skills. Graduates of NIMAS may therefore embark upon their careers with confidence, armed with knowledge, basic experience and inter-personal skills which allow them to successfully face career challenges.</p>
+
+                    <p class="italic-tagline"><strong>Join NIMAS, Think different.</strong></p>
+
+                    <div class="gdlr-core-button-item">
+                        <a href="how-to-apply.html" class="gdlr-core-button"><span class="gdlr-core-content">APPLY NOW</span></a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- NEWS & UPDATES / COURSES OFFERED -->
-        <section class="news-courses-section">
+        <!-- PRE-FOOTER STUDENTS BANNER IMAGE -->
+        <section class="pre-footer-banner">
             <div class="container">
-                <div class="news-courses-grid">
-                    <div class="news-col">
-                        <div class="news-header-row">
-                            <h2>News &amp; Updates</h2>
-                        </div>
-                        <a href="#" class="read-all-link">Read All News</a>
-
-                        <div class="news-cards-grid">
-                            <div class="news-card">
-                                <div class="news-date">FEBRUARY 10, 2020</div>
-                                <h3>PG Course in Dietetics &amp; Nutrition</h3>
-                            </div>
-                            <div class="news-card">
-                                <div class="news-date">FEBRUARY 10, 2020</div>
-                                <h3>MAKAUT affiliated UG Courses</h3>
-                            </div>
-                        </div>
-
-                        <!-- Video Container -->
-                        <div class="news-video-container">
-                            <button class="unmute-btn" id="unmuteBtn">
-                                🔊 Click to Unmute Sound
-                            </button>
-                            <video id="nimasVideo" controls autoplay muted playsinline preload="auto">
-                                <source src="https://pub-4d866113886f4fddadce98b3cae0854b.r2.dev/nimas/nimas-file.mp4" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
-                        </div>
-                    </div>
-
-                    <div class="courses-sidebar-col">
-                        <div class="courses-sidebar-title">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/>
-                            </svg>
-                            Courses Offered
-                        </div>
-
-                        <ul class="courses-sidebar-list">
-                            <li><a href="http://nimas.in/b-optom/">B. Optometry</a></li>
-                            <li><a href="http://nimas.in/b-sc-in-cyber-security/">B.Sc. in Cyber Security</a></li>
-                            <li><a href="http://nimas.in/bsc-computer-science/">B.Sc. in Computer Science</a></li>
-                            <li><a href="http://nimas.in/b-sc-in-data-science/">B.Sc. in Data Science</a></li>
-                            <li><a href="http://nimas.in/m-sc-in-clinical-psychology/">M.Sc. in Clinical Psychology</a></li>
-                            <li><a href="http://nimas.in/m-sc-dietetics-nutration/">M.Sc. Dietetics &amp; Nutrition</a></li>
-                            <li><a href="http://nimas.in/hospitality-administration-institute-in-kolkata/">BHHA</a></li>
-                            <li><a href="http://nimas.in/bba-hospital-management/">Bachelor in Hospital Management</a></li>
-                            <li><a href="http://nimas.in/top-bca-institute-in-kolkata/">BCA</a></li>
-                            <li><a href="http://nimas.in/b-sc-in-medical-lab-technology/">B.Sc. in Medical Lab Technology</a></li>
-                            <li><a href="http://nimas.in/bsc-in-medical-instrumentation-and-critical-care-technology/">B.Sc. in Medical Instrumentation and Critical Care Technology</a></li>
-                            <li><a href="http://nimas.in/bba/">BBA</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- AWARDS SECTION -->
-        <section class="awards-section">
-            <div class="container">
-                <div class="awards-header">
-                    <svg class="awards-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="2" y="8" width="6" height="24" rx="1" fill="#22c55e"/>
-                        <rect x="10" y="8" width="6" height="24" rx="1" fill="#22c55e"/>
-                        <rect x="18" y="8" width="6" height="24" rx="1" fill="#22c55e"/>
-                        <rect x="26" y="8" width="6" height="24" rx="1" fill="#22c55e"/>
-                    </svg>
-                    <h2>Awards</h2>
-                    <p class="awards-quote">
-                        &ldquo;NIMAS provides a guaranteed pathway to a global career. Since inception in 1999, NIMAS has been ranked as a premier education institute by various reputed ranking agencies for consecutive years.&rdquo;
-                    </p>
-                </div>
-
-                <ul class="awards-list">
-                    <li>Best Institute For Paramedical, Information Technology, Hotel Management And Management Studies In West Bengal</li>
-                    <li>&ldquo;Best Institution Offering UG/PG Programs with Outstanding Placement Records in Kolkata, West Bengal&rdquo; – Pride of Indian Education Awards, BrandsImpact 2020.</li>
-                    <li>&ldquo;Best Training, Infrastructure and Placement Institute in Eastern India&rdquo; by India's Most Prominent Education Awards 2019.</li>
-                    <li>&ldquo;Best Hotel Management Institute in West Bengal&rdquo; by India's Most Prominent Education Awards 2017 in association with News18 India (IBN7) as media partner.</li>
-                    <li>&ldquo;Best Hospitality &amp; Hotel Management Training Institute in West Bengal&rdquo; by International Education Excellence Awards, 2017.</li>
-                    <li>&ldquo;Best Training, Infrastructure and Placement Institute in Kolkata&rdquo; by Prime Time Global Education Excellence Awards, 2017.</li>
-                    <li>&ldquo;Top Hotel management Institute of India&rdquo; by CSR Award of Excellence, 2016.</li>
-                    <li>&ldquo;Best Hospitality and Hotel Management Training Institute in Kolkata&rdquo; by Prime Time Global Education Excellence Awards, 2016.</li>
-                </ul>
-
-                <div class="awards-banner">
-                    <img src="https://i.postimg.cc/c131Djq2/allawards.png" alt="NIMAS Awards and Certificates">
-                </div>
-            </div>
-        </section>
-
-        <!-- TESTIMONIALS SECTION -->
-        <section class="testimonials-section">
-            <div class="container">
-                <div class="testimonials-banner">
-                    <img src="https://i.postimg.cc/Y08t15Vm/testimonials.png" alt="NIMAS Student Testimonials">
-                </div>
-            </div>
-        </section>
-
-        <!-- Extracted Text Dark Section -->
-        <section class="info-grid-section">
-            <div class="container">
-                <div class="info-grid">
-                    <div class="info-col">
-                        <h3>23 years of Excellence</h3>
-                        <p>NIMAS with 23 years of academic excellence offers state of the art infrastructure, unmatched industrial exposure and quality education since inception.</p>
-                    </div>
-                    <div class="info-col">
-                        <h3>Affiliated to MAKAUT</h3>
-                        <p>All courses are affiliated to Maulana Abul Kalam Azad University of Technology, West Bengal (formerly known as West Bengal University of Technology).</p>
-                    </div>
-                    <div class="info-col">
-                        <h3>Courses Offered</h3>
-                        <ul class="courses-list">
-                            <li>B. Optometry</li>
-                            <li>B.Sc. in Cyber Security</li>
-                            <li>B.Sc. in Computer Science</li>
-                            <li>B.Sc. in Data Science</li>
-                            <li>M.Sc. in Clinical Psychology</li>
-                            <li>M.Sc. in Dietetics &amp; Nutrition</li>
-                            <li>Hotel Management (BHHA)</li>
-                            <li>Bachelor in Hospital Management</li>
-                            <li>BCA</li>
-                            <li>B.Sc. in Medical Lab Technology</li>
-                            <li>B.Sc. in Medical Instrumentation and Critical Care Technology</li>
-                            <li>BBA</li>
-                        </ul>
-                    </div>
-                    <div class="info-col">
-                        <h3>Corporate Tie-Ups</h3>
-                        <p>Associated with the top recruiters of the industry across the country for internships, guest lecture and final placements.</p>
-                    </div>
-                </div>
+                <img src="images/students-1-800x278.png" alt="NIMAS Students Banner">
             </div>
         </section>
     </main>
@@ -701,17 +194,17 @@
     <!-- REUSABLE FOOTER PLACEHOLDER -->
     <div id="footer-container"></div>
 
-    <!-- JS Scripts -->
+    <!-- JS SCRIPTS FOR REUSABLE COMPONENTS -->
     <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", function() {
             
-            // 1. LOAD REUSABLE HEADER
+            // 1. LOAD HEADER FROM EXTERNAL FILE
             fetch("header.html")
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById("header-container").innerHTML = data;
 
-                    // Re-bind mobile menu toggle script
+                    // Re-bind mobile navigation toggle script
                     const mobileToggle = document.getElementById('mobileToggle');
                     const mainNav = document.getElementById('mainNav');
                     if (mobileToggle && mainNav) {
@@ -722,61 +215,13 @@
                 })
                 .catch(err => console.error("Error loading header:", err));
 
-            // 2. LOAD REUSABLE FOOTER
+            // 2. LOAD FOOTER FROM EXTERNAL FILE (footer.html)
             fetch("footer.html")
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById("footer-container").innerHTML = data;
                 })
                 .catch(err => console.error("Error loading footer:", err));
-
-            // 3. SLIDERS INIT
-            function initSlider(trackId, prevBtnId, nextBtnId) {
-                const track = document.getElementById(trackId);
-                const prevBtn = document.getElementById(prevBtnId);
-                const nextBtn = document.getElementById(nextBtnId);
-
-                if (!track || !prevBtn || !nextBtn) return;
-
-                const slides = track.querySelectorAll('.custom-slide');
-                let currentIndex = 0;
-                const totalSlides = slides.length;
-
-                function updateSlider() {
-                    track.style.transform = `translateX(-${currentIndex * 100}%)`;
-                }
-
-                nextBtn.addEventListener('click', function() {
-                    currentIndex = (currentIndex + 1) % totalSlides;
-                    updateSlider();
-                });
-
-                prevBtn.addEventListener('click', function() {
-                    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-                    updateSlider();
-                });
-            }
-
-            initSlider('sliderTrack', 'prevBtn', 'nextBtn');
-            initSlider('sliderTrack2', 'prevBtn2', 'nextBtn2');
-
-            // 4. VIDEO UNMUTE LOGIC
-            const video = document.getElementById('nimasVideo');
-            const unmuteBtn = document.getElementById('unmuteBtn');
-
-            if (video) {
-                video.play().catch(function(err) {
-                    console.log("Autoplay blocked:", err);
-                });
-
-                if (unmuteBtn) {
-                    unmuteBtn.addEventListener('click', function() {
-                        video.muted = false;
-                        video.play();
-                        unmuteBtn.style.display = 'none';
-                    });
-                }
-            }
         });
     </script>
 </body>
