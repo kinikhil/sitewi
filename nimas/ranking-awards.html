@@ -67,24 +67,24 @@
             color: #6b6b6b;
         }
 
-        /* TOPMOST IMAGE PLACEHOLDER */
-        .awards-placeholder-wrap {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .awards-placeholder-wrap img {
-            max-width: 100%;
-            height: auto;
-            display: inline-block;
-        }
-
-        .gdlr-core-text-box-item-content p.intro-italic {
+        .gdlr-core-text-box-item-content p.intro-text {
             font-size: 15px;
             line-height: 1.8;
             font-style: italic;
             margin-bottom: 30px;
             color: #6b6b6b;
+        }
+
+        /* TOPMOST AWARDS IMAGE DISPLAY */
+        .awards-banner-wrap {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .awards-banner-wrap img {
+            max-width: 100%;
+            height: auto;
+            display: inline-block;
         }
 
         /* BULLET LIST STYLES */
@@ -98,11 +98,8 @@
             font-size: 15px;
             line-height: 1.8;
             margin-bottom: 12px;
-            color: #6b6b6b;
-        }
-
-        .gdlr-core-text-box-item-content ul li strong {
-            color: #333333;
+            color: #444444;
+            font-weight: 600;
         }
 
         /* --- APPLY NOW BUTTON --- */
@@ -182,99 +179,77 @@
             <div class="container">
                 <div class="gdlr-core-text-box-item-content">
                     
-                    <!-- TOPMOST ALL AWARDS IMAGE -->
-                    <div class="awards-placeholder-wrap">
-                        <img src="allawards.jpeg" alt="NIMAS Ranking and Awards Accolades">
+                    <!-- TOPMOST IMAGE -->
+                    <div class="awards-banner-wrap">
+                        <img src="images/allawards.png" alt="NIMAS Ranking and Awards Accolades">
                     </div>
 
-                    <!-- INTRO TEXT -->
-                    <p class="intro-italic">NIMAS provides a guaranteed pathway to a global career. Since inception in 1999, NIMAS have been ranked as a premier education institute by various reputed ranking agencies forHere is the complete **`ranking-awards.html`** file, formatted to match the exact design, CSS layout, header/footer components, and pre-footer banner as your other site pages. 
+                    <!-- INTRODUCTORY TEXT -->
+                    <p class="intro-text">
+                        NIMAS provides a guaranteed pathway to a global career. Since inception in 1999, NIMAS have been ranked as a premier education institute by various reputed ranking agencies for consecutive years. NIMAS’s constant endeavour is to strive for innovation, where excellence manifests itself in the perfect blend of knowledge and process, idea and execution.
+                    </p>
 
-The text content from the image has been fully paraphrased into original wording to comply with content guidelines while maintaining all specific rankings, awards, and institutional details. The topmost image slot uses your specified `allawards.jpeg` image file.
+                    <!-- AWARDS & HONORS LIST -->
+                    <ul>
+                        <li>Best Institute For Paramedical, Information Technology, Hotel Management And Management Studies In West Bengal</li>
+                        <li>“Best Management (Training, Infrastructure and Placement) Institute in Eastern India” by India’s Most Prominent Education Awards</li>
+                        <li>Ranked 34 as the Best Hotel Management Institute in India, by IndiaToday 2018</li>
+                        <li>“Best Hotel Management Institute in West Bengal” by India’s Most Prominent Education Awards, 2017 in association with News 18 India (IBN7) as media partner</li>
+                        <li>“Best Hospitality & Hotel Management Training Institute in West Bengal” by International Education Excellence Awards, 2017</li>
+                        <li>“Best Hotel Management (Training, Infrastructure and Placement) Institute in Kolkata” by Prime Time Global Education Excellence Awards, 2017</li>
+                        <li>“Top Hotel Management Institute of India” by CSRAward for Excellence, 2016</li>
+                        <li>“Best Hospitality and Hotel ManagementTraining Institute in Kolkata” by Prime Time Global Education Excellence Awards, 2016</li>
+                    </ul>
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ranking & Awards – NIMAS</title>
+                    <!-- APPLY NOW BUTTON -->
+                    <div class="gdlr-core-button-item">
+                        <a href="how-to-apply.html" class="gdlr-core-button"><span class="gdlr-core-content">APPLY NOW</span></a>
+                    </div>
 
-    <style type="text/css">
-        /* --- RESET & GLOBAL STYLES --- */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+                </div>
+            </div>
+        </section>
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #ffffff;
-            color: #6b6b6b;
-            line-height: 1.7;
-        }
+        <!-- PRE-FOOTER BANNER IMAGE -->
+        <section class="pre-footer-banner">
+            <div class="container">
+                <img src="images/students-1-800x278.png" alt="NIMAS Students Banner">
+            </div>
+        </section>
+    </main>
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
+    <!-- REUSABLE FOOTER PLACEHOLDER -->
+    <div id="footer-container"></div>
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
+    <!-- JS SCRIPTS FOR REUSABLE COMPONENTS -->
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function() {
+            
+            // 1. LOAD HEADER
+            fetch("header.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("header-container").innerHTML = data;
 
-        /* --- HERO HEADER SECTION --- */
-        .kingster-page-title-wrap {
-            position: relative;
-            background: linear-gradient(rgba(14, 30, 63, 0.9), rgba(14, 30, 63, 0.9)), 
-                        url('[https://sitewinimas.nikk-in.workers.dev/images/nimas-campus.jpg](https://sitewinimas.nikk-in.workers.dev/images/nimas-campus.jpg)') no-repeat center center / cover;
-            text-align: center;
-            color: #ffffff;
-        }
+                    // Re-bind mobile navigation toggle script
+                    const mobileToggle = document.getElementById('mobileToggle');
+                    const mainNav = document.getElementById('mainNav');
+                    if (mobileToggle && mainNav) {
+                        mobileToggle.addEventListener('click', function() {
+                            mainNav.classList.toggle('active');
+                        });
+                    }
+                })
+                .catch(err => console.error("Error loading header:", err));
 
-        .kingster-page-title-content {
-            padding-top: 160px;
-            padding-bottom: 60px;
-        }
-
-        .kingster-page-title {
-            font-size: 48px;
-            font-weight: 700;
-            color: #ffffff;
-            text-transform: none;
-            margin: 0;
-            letter-spacing: -0.5px;
-        }
-
-        /* --- MAIN CONTENT SECTION --- */
-        .content-section {
-            background-color: #ffffff;
-            padding: 60px 0 80px 0;
-        }
-
-        .gdlr-core-text-box-item-content {
-            max-width: 1000px;
-            margin: 0 auto;
-            text-align: left;
-            color: #6b6b6b;
-        }
-
-        .gdlr-core-text-box-item-content p {
-            font-size: 15px;
-            line-height: 1.8;
-            margin-bottom: 22px;
-        }
-
-        .gdlr-core-text-box-item-content p.italic-tagline {
-            font-style: italic;
-            font-weight: 500;
-            color: #555555;
-            margin-top: 10px;
-            margin-bottom: 30px;
-        }
-
-        /* TOPMOST AWARDS IMAGE DISPLAY */
-        .awards-
+            // 2. LOAD FOOTER
+            fetch("footer.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("footer-container").innerHTML = data;
+                })
+                .catch(err => console.error("Error loading footer:", err));
+        });
+    </script>
+</body>
+</html>
