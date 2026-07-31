@@ -4,34 +4,276 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Office of the Chairman – NIMAS</title>
+
     <style type="text/css">
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #ffffff; color: #6b6b6b; line-height: 1.7; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
-        .page-title { background: linear-gradient(rgba(14, 30, 63, 0.9), rgba(14, 30, 63, 0.9)), url('https://sitewinimas.nikk-in.workers.dev/images/nimas-campus.jpg') center/cover; padding: 120px 0 50px; text-align: center; color: #fff; }
-        .page-title h1 { font-size: 40px; }
-        .content { padding: 60px 0; max-width: 900px; margin: 0 auto; }
-        .pre-footer-banner { width: 100%; text-align: center; background-color: #ffffff; padding-bottom: 40px; }
-        .pre-footer-banner img { max-width: 100%; height: auto; display: block; margin: 0 auto; }
+        /* --- RESET & GLOBAL STYLES --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #ffffff;
+            color: #6b6b6b;
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* --- HERO HEADER SECTION --- */
+        .kingster-page-title-wrap {
+            position: relative;
+            background: linear-gradient(rgba(14, 30, 63, 0.9), rgba(14, 30, 63, 0.9)), 
+                        url('https://sitewinimas.nikk-in.workers.dev/images/nimas-campus.jpg') no-repeat center center / cover;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        .kingster-page-title-content {
+            padding-top: 160px;
+            padding-bottom: 60px;
+        }
+
+        .kingster-page-title {
+            font-size: 48px;
+            font-weight: 700;
+            color: #ffffff;
+            text-transform: none;
+            margin: 0;
+            letter-spacing: -0.5px;
+        }
+
+        /* --- MAIN CONTENT SECTION --- */
+        .content-section {
+            background-color: #ffffff;
+            padding: 60px 0;
+        }
+
+        .gdlr-core-text-box-item-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            color: #6b6b6b;
+        }
+
+        /* Grid Layout matching Chairman format */
+        .chairman-grid {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+        }
+
+        .chairman-profile {
+            flex: 0 0 300px;
+            text-align: center;
+        }
+
+        .chairman-profile img {
+            width: 100%;
+            max-width: 280px;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            margin-bottom: 15px;
+        }
+
+        .chairman-profile h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #111111;
+            margin-bottom: 4px;
+        }
+
+        .chairman-profile p {
+            font-size: 14px;
+            color: #555555;
+            font-style: italic;
+            font-weight: 600;
+        }
+
+        .chairman-body {
+            flex: 1;
+        }
+
+        .chairman-body p {
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #6b6b6b;
+        }
+
+        .chairman-body h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #222222;
+            margin: 25px 0 15px 0;
+        }
+
+        .chairman-body ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin-bottom: 25px;
+        }
+
+        .chairman-body ul li {
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 8px;
+            color: #6b6b6b;
+        }
+
+        /* --- PRE-FOOTER BANNER IMAGE --- */
+        .pre-footer-banner {
+            width: 100%;
+            text-align: center;
+            background-color: #ffffff;
+            padding-bottom: 40px;
+        }
+
+        .pre-footer-banner img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 850px) {
+            .chairman-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .chairman-profile {
+                flex: 0 0 auto;
+                margin-bottom: 30px;
+            }
+
+            .kingster-page-title-content {
+                padding-top: 100px;
+                padding-bottom: 40px;
+            }
+
+            .kingster-page-title {
+                font-size: 32px;
+            }
+
+            .content-section {
+                padding: 40px 0;
+            }
+        }
     </style>
 </head>
 <body>
+
+    <!-- REUSABLE HEADER PLACEHOLDER -->
     <div id="header-container"></div>
+
     <main>
-        <section class="page-title"><div class="container"><h1>Office of the Chairman</h1></div></section>
-        <section class="content container">
-            <h2>Message from the Chairman</h2>
-            <br>
-            <p>Welcome to NIMAS. Our vision has always been to nurture young minds into globally competitive professionals equipped with ethical values and technical prowess.</p>
-            <p>We strive to provide a holistic learning environment where academic rigor meets practical experience.</p>
+        <!-- PAGE HERO HEADER -->
+        <section class="kingster-page-title-wrap">
+            <div class="container">
+                <div class="kingster-page-title-content">
+                    <h1 class="kingster-page-title">Office of the Chairman</h1>
+                </div>
+            </div>
         </section>
-        <section class="pre-footer-banner"><div class="container"><img src="images/students-1-800x278.png" alt="Students Banner"></div></section>
+
+        <!-- PAGE CONTENT -->
+        <section class="content-section">
+            <div class="container">
+                <div class="gdlr-core-text-box-item-content">
+                    <div class="chairman-grid">
+                        
+                        <!-- LEFT PROFILE COLUMN -->
+                        <div class="chairman-profile">
+                            <img src="nimas-chairman.jpeg" alt="Mr. Sudip Bhattacharya - Chairman, NIMAS">
+                            <h3>Mr. Sudip Bhattacharya</h3>
+                            <p>Chairman, NIMAS</p>
+                        </div>
+
+                        <!-- RIGHT BODY CONTENT -->
+                        <div class="chairman-body">
+                            <p>In line with our primary educational mission, NIMAS strives to prepare ambitious students for impactful professional journeys by delivering an academic experience grounded in intellectual rigor and strong ethical principles.</p>
+
+                            <p>We are delighted that you are considering NIMAS to guide your educational journey. Our aim is to provide an ideal launchpad for your academic, professional, and personal advancement. To meet modern global standards, we have built top-tier facilities and modern infrastructure tailored to support your learning requirements.</p>
+
+                            <p>Built on a steadfast commitment to integrity, dedication, and innovation, our institution is driven by a desire to train future leaders in Hospitality, Hotel Management, Management Studies, and Information Technology. We focus on cultivating practical expertise, global awareness, and a spirit of continuous learning and inquiry.</p>
+
+                            <p>Today, NIMAS stands as a prominent institution in West Bengal, recognized for its quality standards and official affiliations, including connection with Maulana Abul Kalam Azad University of Technology (formerly WBUT) and ISO 9001:2008 quality certification.</p>
+
+                            <p>Our academic environment offers modern, world-class amenities alongside faculty members who bring extensive hands-on industry experience. We foster a supportive, family-like atmosphere where cultural values and mutual respect form the bedrock of our campus community.</p>
+
+                            <p>Through personalized mentorship, comprehensive guidance, and hands-on exposure to practical events, competitions, and industry seminars, we prepare students to apply their knowledge effectively. This practical focus consistently enables our graduates to stand out and succeed in competitive placement opportunities and executive selection processes.</p>
+
+                            <h4>The core values driving NIMAS toward a shared vision include:</h4>
+                            <ul>
+                                <li>Promoting and practicing a professional global work ethos</li>
+                                <li>Fostering deep respect and appreciation for cultural diversity</li>
+                                <li>Cultivating qualities of leadership, entrepreneurial thinking, and teamwork</li>
+                                <li>Upholding the highest standards of ethics and integrity</li>
+                                <li>Building meaningful collaborations with industry and academic partners</li>
+                            </ul>
+
+                            <p>Every aspect of our curriculum and campus life is organized to ensure you gain the academic foundation and practical competencies needed to excel in your chosen field.</p>
+
+                            <p>We assure you that choosing NIMAS will serve as a strong stepping stone toward a successful and sustainable career.</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRE-FOOTER BANNER IMAGE -->
+        <section class="pre-footer-banner">
+            <div class="container">
+                <img src="images/students-1-800x278.png" alt="NIMAS Students Banner">
+            </div>
+        </section>
     </main>
+
+    <!-- REUSABLE FOOTER PLACEHOLDER -->
     <div id="footer-container"></div>
-    <script>
+
+    <!-- JS SCRIPTS FOR REUSABLE COMPONENTS -->
+    <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", function() {
-            fetch("header.html").then(r => r.text()).then(d => { document.getElementById("header-container").innerHTML = d; });
-            fetch("footer.html").then(r => r.text()).then(d => { document.getElementById("footer-container").innerHTML = d; });
+            
+            // 1. LOAD HEADER
+            fetch("header.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("header-container").innerHTML = data;
+
+                    // Re-bind mobile navigation toggle script
+                    const mobileToggle = document.getElementById('mobileToggle');
+                    const mainNav = document.getElementById('mainNav');
+                    if (mobileToggle && mainNav) {
+                        mobileToggle.addEventListener('click', function() {
+                            mainNav.classList.toggle('active');
+                        });
+                    }
+                })
+                .catch(err => console.error("Error loading header:", err));
+
+            // 2. LOAD FOOTER
+            fetch("footer.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("footer-container").innerHTML = data;
+                })
+                .catch(err => console.error("Error loading footer:", err));
         });
     </script>
 </body>
