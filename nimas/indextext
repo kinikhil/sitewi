@@ -474,69 +474,10 @@
             line-height: 1.4;
         }
 
-        /* --- FOOTER SECTION --- */
-        .site-footer {
-            background-color: #111315;
-            color: #a1a1a1;
-            padding: 60px 0 40px 0;
-            font-size: 14px;
-        }
-
-        .footer-grid {
-            display: flex;
-            gap: 30px;
-            justify-content: space-between;
-        }
-
-        .footer-col {
-            flex: 1;
-        }
-
-        .footer-col h3 {
-            color: #ffffff;
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 15px;
-            padding-bottom: 12px;
-            border-bottom: 2px solid #22c55e;
-            display: inline-block;
-            width: 100%;
-        }
-
-        .footer-col p {
-            line-height: 1.6;
-            margin-bottom: 10px;
-            color: #a1a1a1;
-        }
-
-        .footer-col strong {
-            color: #ffffff;
-        }
-
-        .footer-col ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .footer-col ul li {
-            margin-bottom: 10px;
-        }
-
-        .footer-col ul li a {
-            color: #a1a1a1;
-            transition: color 0.2s ease;
-        }
-
-        .footer-col ul li a:hover {
-            color: #ffffff;
-        }
-
         @media (max-width: 992px) {
             .news-courses-grid,
             .apply-grid,
-            .info-grid,
-            .footer-grid {
+            .info-grid {
                 flex-direction: column;
             }
 
@@ -757,67 +698,20 @@
         </section>
     </main>
 
-    <!-- FOOTER SECTION -->
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h3>Campus Address</h3>
-                    <p>Ward No. 4, Lokenath Mandir<br>
-                    HL NO- 1045/1/A, Behind<br>
-                    Barasat – Barrackpore Rd<br>
-                    Kolkata, 700125</p>
-                    <br>
-                    <p><strong>Reach Out to Us At:</strong></p>
-                    <p>+91-9874641007<br>
-                    <strong>Email:</strong> contact@nimas.in</p>
-                </div>
-
-                <div class="footer-col">
-                    <h3>Opening Hours</h3>
-                    <p><strong>Monday-Friday:</strong><br>
-                    10:30 AM to 5:30 PM</p>
-                    <br>
-                    <p><strong>Saturday:</strong><br>
-                    10:30 AM to 5:30 PM</p>
-                    <br>
-                    <p><strong>Sunday:</strong><br>
-                    Closed</p>
-                </div>
-
-                <div class="footer-col">
-                    <h3>Featured Links</h3>
-                    <ul>
-                        <li><a href="http://nimas.in/know-nimas/">Know NIMAS</a></li>
-                        <li><a href="http://nimas.in/why-nimas/">Why NIMAS</a></li>
-                        <li><a href="http://nimas.in/infrastructure/">Infrastructure</a></li>
-                        <li><a href="http://nimas.in/courses/">Courses</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h3>Academics</h3>
-                    <ul>
-                        <li><a href="http://nimas.in/eligibility/">Eligibility Criteria</a></li>
-                        <li><a href="http://nimas.in/faq/">FAQ</a></li>
-                        <li><a href="http://nimas.in/scholarships/">Scholarships</a></li>
-                        <li><a href="http://nimas.in/how-to-apply/">How to Apply</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <!-- REUSABLE FOOTER PLACEHOLDER -->
+    <div id="footer-container"></div>
 
     <!-- JS Scripts -->
     <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", function() {
-            // LOAD REUSABLE HEADER VIA FETCH API
+            
+            // 1. LOAD REUSABLE HEADER
             fetch("header.html")
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById("header-container").innerHTML = data;
 
-                    // Re-run the script inside header.html after dynamic loading
+                    // Re-bind mobile menu toggle script
                     const mobileToggle = document.getElementById('mobileToggle');
                     const mainNav = document.getElementById('mainNav');
                     if (mobileToggle && mainNav) {
@@ -828,7 +722,15 @@
                 })
                 .catch(err => console.error("Error loading header:", err));
 
-            // SLIDERS INIT
+            // 2. LOAD REUSABLE FOOTER
+            fetch("footer.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("footer-container").innerHTML = data;
+                })
+                .catch(err => console.error("Error loading footer:", err));
+
+            // 3. SLIDERS INIT
             function initSlider(trackId, prevBtnId, nextBtnId) {
                 const track = document.getElementById(trackId);
                 const prevBtn = document.getElementById(prevBtnId);
@@ -858,7 +760,7 @@
             initSlider('sliderTrack', 'prevBtn', 'nextBtn');
             initSlider('sliderTrack2', 'prevBtn2', 'nextBtn2');
 
-            // VIDEO UNMUTE
+            // 4. VIDEO UNMUTE LOGIC
             const video = document.getElementById('nimasVideo');
             const unmuteBtn = document.getElementById('unmuteBtn');
 
