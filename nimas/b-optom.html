@@ -40,12 +40,20 @@
             text-decoration: none;
         }
 
+        /* Standard Site Header & Footer Wrapper Alignment */
+        #header-placeholder,
+        #footer-placeholder {
+            width: 100%;
+            margin: 0 auto;
+        }
+
         /* Banner Styling */
         .page-banner {
             background-color: var(--primary-color);
             color: var(--white);
             text-align: center;
             padding: 60px 20px;
+            width: 100%;
         }
 
         .page-banner h1 {
@@ -53,7 +61,7 @@
             font-weight: 700;
         }
 
-        /* Main Content Layout */
+        /* Main Content Layout - Aligned with site standard */
         .main-container {
             max-width: 1200px;
             margin: 40px auto;
@@ -205,8 +213,8 @@
 
 <body>
 
-    <!-- Header Placeholder Container -->
-    <div id="header-placeholder"></div>
+    <!-- Header Container Aligned to Page Structure -->
+    <header id="header-placeholder"></header>
 
     <section class="page-banner">
         <h1>B. Optometry</h1>
@@ -223,7 +231,7 @@
         <!-- Horizontal Tabs Section -->
         <div class="tabs-container">
             <div class="tabs-header">
-                <!-- First Tab Active By Default -->
+                <!-- First Tab Selected By Default -->
                 <button class="tab-btn active" onclick="openTab(event, 'tab-overview')">Program Overview</button>
                 <button class="tab-btn" onclick="openTab(event, 'tab-eligibility')">Eligibility Criteria</button>
                 <button class="tab-btn" onclick="openTab(event, 'tab-curriculum')">Curriculum</button>
@@ -231,7 +239,7 @@
             </div>
 
             <div class="tab-content-wrapper">
-                <!-- First Panel Active By Default -->
+                <!-- First Panel Selected By Default -->
                 <div id="tab-overview" class="tab-panel active">
                     <h3>Program Overview</h3>
                     <p>B. Optometry programme at NIMAS is unique in its objective to:</p>
@@ -282,11 +290,11 @@
 
     </main>
 
-    <!-- Footer Placeholder Container -->
-    <div id="footer-placeholder"></div>
+    <!-- Footer Container Aligned to Page Structure -->
+    <footer id="footer-placeholder"></footer>
 
     <script type="text/javascript">
-        // Tab switching function
+        // Tab switching logic
         function openTab(evt, tabName) {
             var i, tabpanel, tablinks;
 
@@ -304,12 +312,12 @@
             evt.currentTarget.classList.add("active");
         }
 
-        // Dynamically include external HTML files
+        // Include Header and Footer dynamically
         function loadComponent(elementId, fileUrl) {
             fetch(fileUrl)
                 .then(response => {
                     if (!response.ok) {
-                        throw new Error(`Failed to load ${fileUrl}: ${response.statusText}`);
+                        throw new Error(`Failed to load ${fileUrl}`);
                     }
                     return response.text();
                 })
@@ -321,7 +329,6 @@
                 });
         }
 
-        // Load header and footer on page initialization
         document.addEventListener('DOMContentLoaded', function() {
             loadComponent('header-placeholder', 'header.html');
             loadComponent('footer-placeholder', 'footer.html');
