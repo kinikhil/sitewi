@@ -40,13 +40,12 @@
             text-decoration: none;
         }
 
-        /* Outer Container to maintain overall page bounds if needed */
         .site-wrapper {
             width: 100%;
             margin: 0 auto;
         }
 
-        /* Shared Standard Width Container for Header, Main Content, and Footer */
+        /* Shared Container for Header, Main Content, and Footer */
         .site-container,
         .main-container {
             max-width: 1200px;
@@ -54,7 +53,7 @@
             padding: 0 20px;
         }
 
-        /* Header Placeholder Container with Standard Alignment */
+        /* Header Placeholder Container */
         #header-placeholder {
             max-width: 1200px;
             margin: 0 auto;
@@ -62,26 +61,26 @@
             width: 100%;
         }
 
-        /* Banner Styling aligned inside the container width */
+        /* Main Content Layout */
+        .main-container {
+            margin-top: 30px;
+            margin-bottom: 40px;
+        }
+
+        /* Banner Styling Aligned to Card Widths */
         .page-banner {
             background-color: var(--primary-color);
             color: var(--white);
             text-align: center;
-            padding: 60px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-            width: 100%;
+            padding: 50px 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
 
         .page-banner h1 {
             font-size: 38px;
             font-weight: 700;
-        }
-
-        /* Main Content Layout */
-        .main-container {
-            margin-top: 40px;
-            margin-bottom: 40px;
         }
 
         .content-card {
@@ -105,7 +104,7 @@
 
         /* Horizontal Tabs Styling (tabscontainer) */
         .tabs-container {
-            border-radius: 4px;
+            border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 4px 10px rgba(0,0,0,0.15);
             margin-bottom: 30px;
@@ -210,7 +209,7 @@
             background-color: var(--accent-color);
         }
 
-        /* Footer Placeholder Container with Standard Alignment */
+        /* Footer Placeholder Container */
         #footer-placeholder {
             max-width: 1200px;
             margin: 0 auto;
@@ -241,16 +240,16 @@
 
     <div class="site-wrapper">
 
-        <!-- Header Container - Aligned to max-width: 1200px -->
+        <!-- Header Container -->
         <header id="header-placeholder"></header>
 
-        <!-- Banner Section - Aligned to max-width: 1200px -->
-        <section class="page-banner">
-            <h1>B.Sc. in Cyber Security</h1>
-        </section>
-
-        <!-- Main Container - Aligned to max-width: 1200px -->
+        <!-- Main Container -->
         <main class="main-container">
+
+            <!-- Page Title Banner (Aligned with Content Cards) -->
+            <section class="page-banner">
+                <h1>B.Sc. in Cyber Security</h1>
+            </section>
             
             <!-- Course Description Card -->
             <div class="content-card">
@@ -344,7 +343,7 @@
 
         </main>
 
-        <!-- Footer Container - Aligned to max-width: 1200px -->
+        <!-- Footer Container -->
         <footer id="footer-placeholder"></footer>
 
     </div>
