@@ -59,6 +59,8 @@
             margin: 0 auto;
             padding: 0 20px;
             width: 100%;
+            position: relative;
+            z-index: 99999;
         }
 
         /* Main Content Layout */
@@ -367,7 +369,7 @@
             evt.currentTarget.classList.add("active");
         }
 
-        // Include Header & Footer HTML files
+        // Include Header & Footer HTML files and execute internal scripts
         function loadComponent(elementId, fileUrl) {
             fetch(fileUrl)
                 .then(response => {
@@ -377,7 +379,28 @@
                     return response.text();
                 })
                 .then(data => {
-                    document.getElementById(elementId).innerHTML = data;
+                    const container = document.getElementById(elementId);
+                    container.innerHTML = data;
+
+                    // Execute any <script> tags inside the fetched component
+                    const scripts = container.querySelectorAll("script");
+                    scripts.forEach(oldScript => {
+                        const newScript = document.createElement("script");
+                        Array.from(oldScript.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
+                        newScript.appendChild(document.createTextNode(oldScript.innerHTML));
+                        oldScript.parentNode.replaceChild(newScript, oldScript);
+                    });
+
+                    // Explicitly bind mobile navigation event if header component is loaded
+                    if (elementId === 'header-placeholder') {
+                        const mobileToggle = container.querySelector('#mobileToggle');
+                        const mainNav = container.querySelector('#mainNav');
+                        if (mobileToggle && mainNav) {
+                            mobileToggle.addEventListener('click', function() {
+                                mainNav.classList.toggle('active');
+                            });
+                        }
+                    }
                 })
                 .catch(error => {
                     console.error('Error loading component:', error);
