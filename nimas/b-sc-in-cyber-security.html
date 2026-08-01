@@ -40,19 +40,36 @@
             text-decoration: none;
         }
 
-        /* Standard Site Header & Footer Placeholder Wrappers */
-        #header-placeholder,
-        #footer-placeholder {
+        /* Outer Container to maintain overall page bounds if needed */
+        .site-wrapper {
             width: 100%;
             margin: 0 auto;
         }
 
-        /* Banner Styling */
+        /* Shared Standard Width Container for Header, Main Content, and Footer */
+        .site-container,
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Placeholder Container with Standard Alignment */
+        #header-placeholder {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        /* Banner Styling aligned inside the container width */
         .page-banner {
             background-color: var(--primary-color);
             color: var(--white);
             text-align: center;
             padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
             width: 100%;
         }
 
@@ -63,9 +80,8 @@
 
         /* Main Content Layout */
         .main-container {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
+            margin-top: 40px;
+            margin-bottom: 40px;
         }
 
         .content-card {
@@ -194,6 +210,14 @@
             background-color: var(--accent-color);
         }
 
+        /* Footer Placeholder Container with Standard Alignment */
+        #footer-placeholder {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .page-banner h1 {
@@ -215,111 +239,115 @@
 
 <body>
 
-    <!-- Header Included dynamically via header.html -->
-    <header id="header-placeholder"></header>
+    <div class="site-wrapper">
 
-    <!-- Banner Section -->
-    <section class="page-banner">
-        <h1>B.Sc. in Cyber Security</h1>
-    </section>
+        <!-- Header Container - Aligned to max-width: 1200px -->
+        <header id="header-placeholder"></header>
 
-    <!-- Main Container -->
-    <main class="main-container">
-        
-        <!-- Course Description Card -->
-        <div class="content-card">
-            <h2>Course Description</h2>
-            <p>The under graduate programme B.Sc. in Cyber Security is a three-year UGC recognised degree course under Maulana Abul Kalam Azad University of Technology (MAKAUT).</p>
-            <p>The Bachelor of Science in Cyber Security program prepares students to obtain knowledge for careers in cybersecurity and assurance. The cyber security program consists of topical areas dealing with cyber security management, incident response, and security threat assessment, which requires students to be creators of knowledge and inventors of processes, not merely users of information.</p>
-        </div>
+        <!-- Banner Section - Aligned to max-width: 1200px -->
+        <section class="page-banner">
+            <h1>B.Sc. in Cyber Security</h1>
+        </section>
 
-        <!-- Horizontal Tabs Section (tabscontainer) -->
-        <div class="tabs-container">
-            <div class="tabs-header">
-                <!-- First Tab Active By Default -->
-                <button class="tab-btn active" onclick="openTab(event, 'tab-overview')">Program Overview</button>
-                <button class="tab-btn" onclick="openTab(event, 'tab-eligibility')">Eligibility Criteria</button>
-                <button class="tab-btn" onclick="openTab(event, 'tab-curriculum')">Curriculum</button>
-                <button class="tab-btn" onclick="openTab(event, 'tab-duration')">Duration</button>
+        <!-- Main Container - Aligned to max-width: 1200px -->
+        <main class="main-container">
+            
+            <!-- Course Description Card -->
+            <div class="content-card">
+                <h2>Course Description</h2>
+                <p>The under graduate programme B.Sc. in Cyber Security is a three-year UGC recognised degree course under Maulana Abul Kalam Azad University of Technology (MAKAUT).</p>
+                <p>The Bachelor of Science in Cyber Security program prepares students to obtain knowledge for careers in cybersecurity and assurance. The cyber security program consists of topical areas dealing with cyber security management, incident response, and security threat assessment, which requires students to be creators of knowledge and inventors of processes, not merely users of information.</p>
             </div>
 
-            <div class="tab-content-wrapper">
-                <!-- First Panel Active By Default -->
-                <div id="tab-overview" class="tab-panel active">
-                    <h3>Program Overview</h3>
-                    <p>B.Sc. in Cyber Security programme at NIMAS is unique in its objective to</p>
-                    <ul>
-                        <li>Application of technical strategies, tools, and techniques to secure data and information for a customer or client.</li>
-                        <li>Adherence to a high standard of ethical behavior.</li>
-                        <li>Use of research in both established venues and innovative applications to expand the body of knowledge in information assurance.</li>
-                        <li>Application of principles of critical thinking to creatively and systematically solve the problems and meet the challenges of the ever-changing environments of cybersecurity.</li>
-                        <li>Mastery of the skills necessary to move into leadership roles in companies, agencies, divisions, or departments.</li>
-                    </ul>
+            <!-- Horizontal Tabs Section (tabscontainer) -->
+            <div class="tabs-container">
+                <div class="tabs-header">
+                    <!-- First Tab Active By Default -->
+                    <button class="tab-btn active" onclick="openTab(event, 'tab-overview')">Program Overview</button>
+                    <button class="tab-btn" onclick="openTab(event, 'tab-eligibility')">Eligibility Criteria</button>
+                    <button class="tab-btn" onclick="openTab(event, 'tab-curriculum')">Curriculum</button>
+                    <button class="tab-btn" onclick="openTab(event, 'tab-duration')">Duration</button>
                 </div>
 
-                <div id="tab-eligibility" class="tab-panel">
-                    <h3>Eligibility Criteria</h3>
-                    <ul>
-                        <li>Students who are due to appear for Class XII final exams/awaiting results may be given provisional admission depending on their CET score</li>
-                        <li>Admissions are strictly on merit basis</li>
-                    </ul>
-                </div>
+                <div class="tab-content-wrapper">
+                    <!-- First Panel Active By Default -->
+                    <div id="tab-overview" class="tab-panel active">
+                        <h3>Program Overview</h3>
+                        <p>B.Sc. in Cyber Security programme at NIMAS is unique in its objective to</p>
+                        <ul>
+                            <li>Application of technical strategies, tools, and techniques to secure data and information for a customer or client.</li>
+                            <li>Adherence to a high standard of ethical behavior.</li>
+                            <li>Use of research in both established venues and innovative applications to expand the body of knowledge in information assurance.</li>
+                            <li>Application of principles of critical thinking to creatively and systematically solve the problems and meet the challenges of the ever-changing environments of cybersecurity.</li>
+                            <li>Mastery of the skills necessary to move into leadership roles in companies, agencies, divisions, or departments.</li>
+                        </ul>
+                    </div>
 
-                <div id="tab-curriculum" class="tab-panel">
-                    <h3>Curriculum (Course Modules)</h3>
-                    <ul>
-                        <li>Linear Algebra</li>
-                        <li>Basic Statistics</li>
-                        <li>Programming in C</li>
-                        <li>Communication Skill in English</li>
-                        <li>Programming in C Lab</li>
-                        <li>Microsoft Excel Lab</li>
-                        <li>Operating Systems</li>
-                        <li>Discrete Mathematics</li>
-                        <li>Data Structures and Program Design in C</li>
-                        <li>Computer Organization and Architecture</li>
-                        <li>Data Structures Lab</li>
-                        <li>Operating Systems Lab</li>
-                        <li>Object-Oriented Programming in JAVA</li>
-                        <li>Data Communications and Networking</li>
-                        <li>Cryptography I</li>
-                        <li>Design and Analysis of Algorithms</li>
-                        <li>Linux Systems Security Lab</li>
-                        <li>Object-Oriented Programming in JAVA Lab</li>
-                        <li>Cryptography II</li>
-                        <li>Network Security: Firewalls, Intrusion Detection Systems, and Virtual Private Networks</li>
-                        <li>Hacking Techniques: Tools and Incident Handling</li>
-                        <li>Wireless and Mobile Device Security</li>
-                        <li>Network Security Lab</li>
-                        <li>Wireless Security Lab</li>
-                        <li>Internet Security</li>
-                        <li>Access Control and Authentication Techniques</li>
-                        <li>Auditing IT Infrastructures for Compliance</li>
-                        <li>Security in Internet of Things</li>
-                        <li>IoT Security Lab</li>
-                        <li>Access Control and Authentication Lab</li>
-                        <li>Elective – I</li>
-                        <li>Elective – II</li>
-                        <li>Grand Viva</li>
-                        <li>Major Project</li>
-                    </ul>
-                </div>
+                    <div id="tab-eligibility" class="tab-panel">
+                        <h3>Eligibility Criteria</h3>
+                        <ul>
+                            <li>Students who are due to appear for Class XII final exams/awaiting results may be given provisional admission depending on their CET score</li>
+                            <li>Admissions are strictly on merit basis</li>
+                        </ul>
+                    </div>
 
-                <div id="tab-duration" class="tab-panel">
-                    <p>3 Years- Full Time</p>
+                    <div id="tab-curriculum" class="tab-panel">
+                        <h3>Curriculum (Course Modules)</h3>
+                        <ul>
+                            <li>Linear Algebra</li>
+                            <li>Basic Statistics</li>
+                            <li>Programming in C</li>
+                            <li>Communication Skill in English</li>
+                            <li>Programming in C Lab</li>
+                            <li>Microsoft Excel Lab</li>
+                            <li>Operating Systems</li>
+                            <li>Discrete Mathematics</li>
+                            <li>Data Structures and Program Design in C</li>
+                            <li>Computer Organization and Architecture</li>
+                            <li>Data Structures Lab</li>
+                            <li>Operating Systems Lab</li>
+                            <li>Object-Oriented Programming in JAVA</li>
+                            <li>Data Communications and Networking</li>
+                            <li>Cryptography I</li>
+                            <li>Design and Analysis of Algorithms</li>
+                            <li>Linux Systems Security Lab</li>
+                            <li>Object-Oriented Programming in JAVA Lab</li>
+                            <li>Cryptography II</li>
+                            <li>Network Security: Firewalls, Intrusion Detection Systems, and Virtual Private Networks</li>
+                            <li>Hacking Techniques: Tools and Incident Handling</li>
+                            <li>Wireless and Mobile Device Security</li>
+                            <li>Network Security Lab</li>
+                            <li>Wireless Security Lab</li>
+                            <li>Internet Security</li>
+                            <li>Access Control and Authentication Techniques</li>
+                            <li>Auditing IT Infrastructures for Compliance</li>
+                            <li>Security in Internet of Things</li>
+                            <li>IoT Security Lab</li>
+                            <li>Access Control and Authentication Lab</li>
+                            <li>Elective – I</li>
+                            <li>Elective – II</li>
+                            <li>Grand Viva</li>
+                            <li>Major Project</li>
+                        </ul>
+                    </div>
+
+                    <div id="tab-duration" class="tab-panel">
+                        <p>3 Years- Full Time</p>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Call To Action -->
-        <div class="btn-container">
-            <a href="#" class="btn-apply">APPLY NOW</a>
-        </div>
+            <!-- Call To Action -->
+            <div class="btn-container">
+                <a href="#" class="btn-apply">APPLY NOW</a>
+            </div>
 
-    </main>
+        </main>
 
-    <!-- Footer Included dynamically via footer.html -->
-    <footer id="footer-placeholder"></footer>
+        <!-- Footer Container - Aligned to max-width: 1200px -->
+        <footer id="footer-placeholder"></footer>
+
+    </div>
 
     <script type="text/javascript">
         // Tab Functionality
