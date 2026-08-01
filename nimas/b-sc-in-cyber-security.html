@@ -1,39 +1,367 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Academic Course – NIMAS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>B.Sc. in Cyber Security – NIMAS</title>
+    
     <style type="text/css">
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #ffffff; color: #6b6b6b; line-height: 1.7; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
-        .page-title { background: linear-gradient(rgba(14, 30, 63, 0.9), rgba(14, 30, 63, 0.9)), url('https://sitewinimas.nikk-in.workers.dev/images/nimas-campus.jpg') center/cover; padding: 120px 0 50px; text-align: center; color: #fff; }
-        .page-title h1 { font-size: 40px; }
-        .content { padding: 60px 0; max-width: 900px; margin: 0 auto; }
-        .apply-btn { display: inline-block; background-color: #0e1e3f; color: #fff; padding: 12px 30px; font-weight: bold; text-decoration: none; border-radius: 4px; margin-top: 20px; }
-        .pre-footer-banner { width: 100%; text-align: center; background-color: #ffffff; padding-bottom: 40px; }
-        .pre-footer-banner img { max-width: 100%; height: auto; display: block; margin: 0 auto; }
+        :root {
+            --primary-color: #0e1e3f;
+            --secondary-color: #1c1c1c;
+            --accent-color: #0056b3;
+            --text-color: #333333;
+            --bg-light: #f8f9fa;
+            --border-color: #e0e0e0;
+            --white: #ffffff;
+
+            /* Tab Specific Colors */
+            --tab-inactive-bg: linear-gradient(180deg, #4c4c4c 0%, #1e1e1e 50%, #000000 100%);
+            --tab-active-bg: linear-gradient(180deg, #4d6494 0%, #223c72 40%, #182b52 100%);
+            --panel-bg: #182b52;
+            --accent-red: #e74c3c;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--bg-light);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Standard Site Header & Footer Placeholder Wrappers */
+        #header-placeholder,
+        #footer-placeholder {
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* Banner Styling */
+        .page-banner {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 60px 20px;
+            width: 100%;
+        }
+
+        .page-banner h1 {
+            font-size: 38px;
+            font-weight: 700;
+        }
+
+        /* Main Content Layout */
+        .main-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .content-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        .content-card h2 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 26px;
+        }
+
+        .content-card p {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        /* Horizontal Tabs Styling (tabscontainer) */
+        .tabs-container {
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            margin-bottom: 30px;
+        }
+
+        .tabs-header {
+            display: flex;
+            background-color: #000;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 22px 15px;
+            background: var(--tab-inactive-bg);
+            border: none;
+            outline: none;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--white);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+            border-right: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .tab-btn:last-child {
+            border-right: none;
+        }
+
+        .tab-btn:hover {
+            opacity: 0.9;
+        }
+
+        .tab-btn.active {
+            background: var(--tab-active-bg);
+            color: var(--white);
+        }
+
+        .tab-content-wrapper {
+            background-color: var(--panel-bg);
+            color: var(--white);
+            padding: 40px 30px;
+            min-height: 200px;
+        }
+
+        .tab-panel {
+            display: none;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
+        /* Red Accent Line Below Active Tab Content */
+        .tab-panel::before {
+            content: "";
+            display: block;
+            width: 30px;
+            height: 3px;
+            background-color: var(--accent-red);
+            margin-bottom: 20px;
+        }
+
+        .tab-panel h3 {
+            color: var(--white);
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .tab-panel p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .tab-panel ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .tab-panel li {
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+
+        /* Call To Action Button */
+        .btn-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .btn-apply {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 15px 40px;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-apply:hover {
+            background-color: var(--accent-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .page-banner h1 {
+                font-size: 28px;
+            }
+
+            .tabs-header {
+                flex-direction: column;
+            }
+
+            .tab-btn {
+                text-align: left;
+                padding: 15px 20px;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+        }
     </style>
 </head>
+
 <body>
-    <div id="header-container"></div>
-    <main>
-        <section class="page-title"><div class="container"><h1>Course Details</h1></div></section>
-        <section class="content container">
-            <h2>Program Overview</h2>
-            <br>
-            <p>This program is affiliated with MAKAUT and designed according to industry standards to equip students with core academic knowledge and practical expertise.</p>
-            <a href="how-to-apply.html" class="apply-btn">APPLY NOW</a>
-        </section>
-        <section class="pre-footer-banner"><div class="container"><img src="images/students-1-800x278.png" alt="Students Banner"></div></section>
+
+    <!-- Header Included dynamically via header.html -->
+    <header id="header-placeholder"></header>
+
+    <!-- Banner Section -->
+    <section class="page-banner">
+        <h1>B.Sc. in Cyber Security</h1>
+    </section>
+
+    <!-- Main Container -->
+    <main class="main-container">
+        
+        <!-- Course Description Card -->
+        <div class="content-card">
+            <h2>Course Description</h2>
+            <p>The under graduate programme B.Sc. in Cyber Security is a three-year UGC recognised degree course under Maulana Abul Kalam Azad University of Technology (MAKAUT).</p>
+            <p>The Bachelor of Science in Cyber Security program prepares students to obtain knowledge for careers in cybersecurity and assurance. The cyber security program consists of topical areas dealing with cyber security management, incident response, and security threat assessment, which requires students to be creators of knowledge and inventors of processes, not merely users of information.</p>
+        </div>
+
+        <!-- Horizontal Tabs Section (tabscontainer) -->
+        <div class="tabs-container">
+            <div class="tabs-header">
+                <!-- First Tab Active By Default -->
+                <button class="tab-btn active" onclick="openTab(event, 'tab-overview')">Program Overview</button>
+                <button class="tab-btn" onclick="openTab(event, 'tab-eligibility')">Eligibility Criteria</button>
+                <button class="tab-btn" onclick="openTab(event, 'tab-curriculum')">Curriculum</button>
+                <button class="tab-btn" onclick="openTab(event, 'tab-duration')">Duration</button>
+            </div>
+
+            <div class="tab-content-wrapper">
+                <!-- First Panel Active By Default -->
+                <div id="tab-overview" class="tab-panel active">
+                    <h3>Program Overview</h3>
+                    <p>B.Sc. in Cyber Security programme at NIMAS is unique in its objective to</p>
+                    <ul>
+                        <li>Application of technical strategies, tools, and techniques to secure data and information for a customer or client.</li>
+                        <li>Adherence to a high standard of ethical behavior.</li>
+                        <li>Use of research in both established venues and innovative applications to expand the body of knowledge in information assurance.</li>
+                        <li>Application of principles of critical thinking to creatively and systematically solve the problems and meet the challenges of the ever-changing environments of cybersecurity.</li>
+                        <li>Mastery of the skills necessary to move into leadership roles in companies, agencies, divisions, or departments.</li>
+                    </ul>
+                </div>
+
+                <div id="tab-eligibility" class="tab-panel">
+                    <h3>Eligibility Criteria</h3>
+                    <ul>
+                        <li>Students who are due to appear for Class XII final exams/awaiting results may be given provisional admission depending on their CET score</li>
+                        <li>Admissions are strictly on merit basis</li>
+                    </ul>
+                </div>
+
+                <div id="tab-curriculum" class="tab-panel">
+                    <h3>Curriculum (Course Modules)</h3>
+                    <ul>
+                        <li>Linear Algebra</li>
+                        <li>Basic Statistics</li>
+                        <li>Programming in C</li>
+                        <li>Communication Skill in English</li>
+                        <li>Programming in C Lab</li>
+                        <li>Microsoft Excel Lab</li>
+                        <li>Operating Systems</li>
+                        <li>Discrete Mathematics</li>
+                        <li>Data Structures and Program Design in C</li>
+                        <li>Computer Organization and Architecture</li>
+                        <li>Data Structures Lab</li>
+                        <li>Operating Systems Lab</li>
+                        <li>Object-Oriented Programming in JAVA</li>
+                        <li>Data Communications and Networking</li>
+                        <li>Cryptography I</li>
+                        <li>Design and Analysis of Algorithms</li>
+                        <li>Linux Systems Security Lab</li>
+                        <li>Object-Oriented Programming in JAVA Lab</li>
+                        <li>Cryptography II</li>
+                        <li>Network Security: Firewalls, Intrusion Detection Systems, and Virtual Private Networks</li>
+                        <li>Hacking Techniques: Tools and Incident Handling</li>
+                        <li>Wireless and Mobile Device Security</li>
+                        <li>Network Security Lab</li>
+                        <li>Wireless Security Lab</li>
+                        <li>Internet Security</li>
+                        <li>Access Control and Authentication Techniques</li>
+                        <li>Auditing IT Infrastructures for Compliance</li>
+                        <li>Security in Internet of Things</li>
+                        <li>IoT Security Lab</li>
+                        <li>Access Control and Authentication Lab</li>
+                        <li>Elective – I</li>
+                        <li>Elective – II</li>
+                        <li>Grand Viva</li>
+                        <li>Major Project</li>
+                    </ul>
+                </div>
+
+                <div id="tab-duration" class="tab-panel">
+                    <p>3 Years- Full Time</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call To Action -->
+        <div class="btn-container">
+            <a href="#" class="btn-apply">APPLY NOW</a>
+        </div>
+
     </main>
-    <div id="footer-container"></div>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            fetch("header.html").then(r => r.text()).then(d => { document.getElementById("header-container").innerHTML = d; });
-            fetch("footer.html").then(r => r.text()).then(d => { document.getElementById("footer-container").innerHTML = d; });
+
+    <!-- Footer Included dynamically via footer.html -->
+    <footer id="footer-placeholder"></footer>
+
+    <script type="text/javascript">
+        // Tab Functionality
+        function openTab(evt, tabName) {
+            var i, tabpanel, tablinks;
+
+            tabpanel = document.getElementsByClassName("tab-panel");
+            for (i = 0; i < tabpanel.length; i++) {
+                tabpanel[i].classList.remove("active");
+            }
+
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        // Include Header & Footer HTML files
+        function loadComponent(elementId, fileUrl) {
+            fetch(fileUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Failed to load ${fileUrl}`);
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById(elementId).innerHTML = data;
+                })
+                .catch(error => {
+                    console.error('Error loading component:', error);
+                });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            loadComponent('header-placeholder', 'header.html');
+            loadComponent('footer-placeholder', 'footer.html');
         });
     </script>
+
 </body>
 </html>
